@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Features 🔥</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Fixiertes Hintergrundbild */
+      min-height: 100vh;
+      overflow-x: hidden;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-slide.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .feature {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 50, 0.75);
+      border-radius: 12px;
+      padding: 30px;
+      gap: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .feature-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .feature-text h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .feature-text p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .feature-image {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .feature-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .back-link a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .feature {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container fade-slide">
+    <h1>Blue Features 🔥</h1>
+    <p class="subtitle">Hier siehst du die besten Features von Blue! 👀</p>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h2>Globalchat 🌍</h2>
+        <p>Chatte mit Mitgliedern aus ganz Discord in einem einzigen Kanal! Tausche dich aus, finde neue Freunde und bleibe überall verbunden.</p>
+      </div>
+      <div class="feature-image">
+        <img src="https://images-ext-1.discordapp.net/external/tTQXDq6zQWL10Nwb6C69GRpIU0Xib1jls1wakYOafb0/https/pbs.twimg.com/media/Gt_y2clWYAAhkX_.png%3Alarge?format=webp" alt="Globalchat Feature" />
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h2>Ticket System 🎫</h2>
+        <p>Mit unserem Ticket-System kannst du ganz einfach Unterstützung erhalten oder Anliegen direkt an das Server Team senden. Egal, ob du Fragen hast, Probleme melden möchtest oder spezielle Wünsche hast – erstelle einfach ein Ticket, und das Server Team kümmert sich so schnell wie möglich darum.</p>
+      </div>
+      <div class="feature-image">
+        <img src="https://images-ext-1.discordapp.net/external/8LIq9pRSkRl_Rd4Pj58uNG0KkTSPmev1-sUXFy4iNdU/https/pbs.twimg.com/media/Gt1Mv_IXwAAU1Wa.png%3Alarge?format=webp" alt="Ticket System Feature" />
+      </div>
+    </div>
+    
+    <div class="feature">
+      <div class="feature-text">
+        <h2>Logging System 📛</h2>
+        <p>Ein zuverlässiges Logging-System für Discord-Server, das automatisch alle wichtigen Ereignisse dokumentiert – von Moderationsaktionen wie Bans und Timeouts bis hin zu Nachrichtenänderungen, Rollen- und Kanalaktualisierungen. Ideal für Admins, die volle Transparenz und Kontrolle über ihren Server behalten möchten. Alles wird sauber und übersichtlich in Form von Embeds ausgegeben.</p>
+      </div>
+      <div class="feature-image">
+        <img src="https://i.imgur.com/A6AXmnD.png" alt="Ticket System Feature" />
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="index.html">⬅ Zurück zur Startseite</a>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.overflow = 'hidden';
+      const fadeEls = document.querySelectorAll('.fade-slide');
+
+      fadeEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+          if (i === fadeEls.length - 1) {
+            setTimeout(() => {
+              document.body.style.overflow = 'auto'; // Scroll wieder aktiv
+            }, 600);
+          }
+        }, i * 300);
+      });
+    });
+  </script>
+
+</body>
+</html>

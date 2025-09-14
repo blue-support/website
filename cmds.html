@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bot Commands ⚡</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: #000022;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { display: none; }
+    body { scrollbar-width: none; -ms-overflow-style: none; }
+
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-slide.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 50, 0.8);
+      padding: 15px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+    }
+
+    .menu-wrapper {
+      position: absolute;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .menu-icon {
+      font-size: 28px;
+    }
+
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: rgba(0, 0, 50, 0.95);
+      border-radius: 8px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+      font-size: 16px;
+      min-width: 150px;
+    }
+
+    .dropdown a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      padding: 60px 20px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .main h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .command {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .command strong {
+      color: #00ffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar fade-slide">
+    <div class="menu-wrapper" onclick="toggleMenu()">
+      <div class="menu-icon">☰</div>
+      <div>Menü</div>
+    </div>
+    <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" style="margin-right: 10px;" />
+    Blue Support ⚡
+    <div class="dropdown" id="dropdownMenu">
+      <a href="index.html">Startseite</a>
+      <a href="partners.html">Partners</a>
+      <a href="generator.html">QR Generator</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
+    </div>
+  </div>
+
+  <div class="main fade-slide">
+    <h1>Bot Commands</h1>
+    <div class="command"><strong>/help</strong> – Zeigt alle Befehle an</div>
+    <div class="command"><strong>/setup-globalchat</strong> – Setzt einen Channel als Globalchat. (Admin only)</div>
+    <div class="command"><strong>/remove-globalchat</strong> – Entfernt einen Globalchat-Channel. (Admin only)</div>
+    <div class="command"><strong>/global-dm-active</strong> – Aktiviere oder deaktiviere DM-Benachrichtigungen im Globalchat.</div>
+    <div class="command"><strong>/bot-invite</strong> – Bot einladen</div>
+    <div class="command"><strong>/tictactoe</strong> – Starte ein Tic Tac Toe Spiel</div>
+    <div class="command"><strong>/setup-counting</strong> – Setzt den Kanal für das Zählspiel. (Admin only)</div>
+    <div class="command"><strong>/setup-errate-zahl</strong> – Startet ein Errate-die-Zahl-Spiel in einem Kanal. (Admin only)</div>
+    <div class="command"><strong>/join</strong> – Bot joined deinem Sprachkanal (Admin only)</div>
+    <div class="command"><strong>/leave</strong> – Bot verlässt den Sprachkanal (Admin only)</div>
+    <div class="command"><strong>/aktueller-song</strong> – Zeigt den aktuell laufenden Song an</div>
+    <div class="command"><strong>/vorheriger-song</strong> – Zeigt den Song an, der davor abgespielt wurde</div>
+    <div class="command"><strong>/list-songs</strong> – Zeigt eine Liste mit allen Songs an</div>
+    <div class="command"><strong>/kiss</strong> – Küsse deinen Crush 💋</div>
+    <div class="command"><strong>/ship</strong> – Finde heraus wie gut zwei Leute zusammenpassen 💖</div>
+    <div class="command"><strong>/ban</strong> – Bannt einen User mit Grund und optionaler Dauer. (Admin only)</div>
+    <div class="command"><strong>/unban</strong> – Entbannt einen User manuell. (Admin only)</div>
+    <div class="command"><strong>/kick</strong> – Kickt einen User mit Grund. (Admin only)</div>
+    <div class="command"><strong>/mute</strong> – Muted (Timeout) einen User für eine bestimmte Dauer. (Admin Only)</div>
+    <div class="command"><strong>/unmute</strong> – Entmutet (Timeout Ende) einen User manuell. (Admin only)</div>
+    <!-- Weitere Commands kannst du hier einfügen -->
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    window.addEventListener('load', () => {
+      const fadeEls = document.querySelectorAll('.fade-slide');
+      fadeEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, i * 300);
+      });
+    });
+  </script>
+
+</body>
+</html>

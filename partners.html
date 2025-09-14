@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unsere Partner ⚡</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-slide.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 50, 0.8);
+      padding: 34px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+    }
+
+    .menu-wrapper {
+      position: absolute;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+    }
+
+    .menu-toggle {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: rgba(0, 0, 50, 0.95);
+      border-radius: 8px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+      font-size: 16px;
+      min-width: 150px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      padding: 60px 20px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .main h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .main .description {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .partner-card {
+      background-color: rgba(255, 140, 0, 0.9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .partner-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+
+    .partner-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 2px solid white;
+    }
+
+    .partner-card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .partner-card h2 a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .partner-card h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .partner-card p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1000px) {
+      .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .partners-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar fade-slide">
+  <div class="menu-wrapper" onclick="toggleMenu()">
+    <div class="menu-toggle">☰</div>
+    <span style="font-size: 16px;">Menü</span>
+  </div>
+
+  <!-- Titel und Profilbild zentriert -->
+  <div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px;">
+    <img src="https://i.imgur.com/RuRTBMD.png" alt="Profilbild" class="profile-img" />
+    <span>Blue Support ⚡</span>
+  </div>
+</div>
+
+<div class="menu" id="dropdownMenu">
+  <a href="index.html">Startseite</a>
+  <a href="cmds.html">Bot Commands</a>
+  <a href="generator.html">QR Generator</a>
+  <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
+</div>
+
+<div class="main fade-slide">
+  <h1>Unsere Partner</h1>
+  <div class="description">Hier findest du alle unsere Partnerschaften.</div>
+
+  <div class="partners-grid">
+    <!-- Partner-Karten – einfach HREF individuell setzen -->
+    <div class="partner-card">
+      <img src="https://i.imgur.com/7awxin3.png" alt="Partner 1" />
+      <h2><a href="https://discord.gg/UHkUKbugfz" target="_blank">STGMNetwork (DE)</a></h2>
+      <p>STGMNetwork develops innovative software solutions that help you build your business efficiently while creating exceptional experiences for your customers.</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/MmqL98f.png" alt="Partner 2" />
+      <h2><a href="https://discord.gg/QanWG2yT" target="_blank">Melis place</a></h2>
+      <p>✨ Melis Place – dein gemütlicher Ort zum Chillen, Quatschen und Spaß haben.
+Ob Gaming, Musik oder einfach nur entspannt abhängen – hier ist jeder willkommen, der gute Vibes mitbringt. 💫</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/EAQAY9A.png" alt="Partner 3" />
+      <h2><a href="https://discord.gg/htp7HjdAMd" target="_blank">Minispielehaus</a></h2>
+      <p>Das ist ein Gaming-Server, der hauptsächlich auf Mario Kart ausgerichtet ist, aber auch viele andere Games und Minispiele anbietet. Es gibt regelmäßig Giveaways, und unser Staff ist sehr engagiert :)🎉</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 4" />
+      <h2><a href="https://discord.gg/Pe8Mye9mfr" target="_blank">NexoraHost.com</a></h2>
+      <p>Leistungsstarke, sichere und blitzschnelle Server für dein nächstes Projekt – mit Fokus auf Performance, Sicherheit und Support.</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://images-ext-1.discordapp.net/external/Nfr3gDzHBvCD7zh44QeOIwn4-H2NWurcI43ZBlnz1Co/%3Fsize%3D1024/https/cdn.discordapp.com/icons/801052933227413505/a_7a56c6f40d8cf7f5cff8551837cd908d.gif" alt="Partner 5" />
+      <h2><a href="https://discord.gg/tjKeANbM67" target="_blank">Team Grün Gaming-Community</a></h2>
+      <p>Hey Freunde! Sucht ihr einen Discord-Server zum Zocken, Chillen und Quatschen? Dann seid ihr bei uns genau richtig!
+Tretet unserem Server gerne bei, falls wir euer Interesse geweckt haben!
+Wir freuen uns auf dich!</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/tiLj4Sa.png" alt="Partner 6" />
+      <h2><a href="https://discord.gg/UrCQBP6fMz" target="_blank">BM Network MC (AG)</a></h2>
+      <p>BM Network ist eine Minecraft-Community, die spannende Events, SMPs und besondere Projekte bietet! Werde Teil einer aktiven und freundlichen Community! </p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 7" />
+      <h2><a href="https://blue-bot.neocities.org/not_found" target="_blank">Verfügbar</a></h2>
+      <p>Du möchtest Partner werden? Bewirb dich jetzt bei uns und werde Teil unserer Community!</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/wA2huVu.png" alt="Partner 8" />
+      <h2><a href="https://discord.gg/gQupsCMJZk" target="_blank">Vacer.de</a></h2>
+      <p>Vacer.de bietet dir kostenloses Hosting für Minecraft-Server, Webseiten und Discord-Bots.
+Dank moderner Hardware, einfacher Bedienung und 24/7 Support läuft dein Projekt reibungslos – ohne einen Cent zu zahlen!
+Ob du zockst, entwickelst oder was Eigenes starten willst – bei uns bist du genau richtig! 🚀</p>
+    </div>
+
+    <div class="partner-card">
+      <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 9" />
+      <h2><a href="https://blue-bot.neocities.org/not_found" target="_blank">Verfügbar</a></h2>
+      <p>Du möchtest Partner werden? Bewirb dich jetzt bei uns und werde Teil unserer Community!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  }
+
+  window.addEventListener('load', () => {
+    const fadeEls = document.querySelectorAll('.fade-slide');
+    fadeEls.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, i * 300);
+    });
+  });
+</script>
+</body>
+</html>

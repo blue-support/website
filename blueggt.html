@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BlueGGT</title>
+<link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+<style>
+:root {
+  --color-bg-dark: #121212;
+  --color-text-dark: #eee;
+  --color-accent: #10a37f;
+  --color-user-msg: #0066ff;
+  --color-bot-msg: #10a37f;
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  padding: 10px 20px;
+  background-color: var(--color-accent);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .title-container {
+  display: flex;
+  align-items: center;
+}
+
+#header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgb(16 163 127 / 0.6);
+}
+
+header button {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+header button:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 20px auto;
+  width: 90%;
+  border: 2px solid #444;
+  border-radius: 10px;
+  background-color: #222;
+  color: var(--color-text-dark);
+  box-shadow: 0 0 15px rgb(16 163 127 / 0.6);
+  position: relative;
+}
+
+#chatbox {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Profilbild über dem Mittentext */
+#chat-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+  box-shadow: 0 0 10px rgb(16 163 127 / 0.6);
+  object-fit: cover;
+}
+
+#chat-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.message {
+  margin-bottom: 15px;
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  line-height: 1.4;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+.user {
+  background-color: var(--color-user-msg);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+
+.bot {
+  background-color: var(--color-bot-msg);
+  color: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+
+#input-area {
+  display: flex;
+  border-top: 1px solid #444;
+}
+
+#userInput {
+  flex: 1;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 0 0 0 10px;
+  outline: none;
+  background-color: #333;
+  color: #eee;
+}
+
+#sendBtn {
+  background-color: var(--color-accent);
+  border: none;
+  color: white;
+  padding: 0 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 0 0 10px 0;
+}
+#sendBtn:hover:not(:disabled) {
+  background-color: #0d7a5b;
+}
+#sendBtn:disabled {
+  background-color: #999;
+  cursor: default;
+}
+
+.typing {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  height: 20px;
+}
+.typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: blink 1.4s infinite;
+}
+.typing span:nth-child(1) { animation-delay: 0s; }
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 80%, 100% {opacity: 0.4;}
+  40% {opacity: 1;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="title-container">
+    <img id="header-logo" src="https://i.imgur.com/RuRTBMD.png" alt="BlueGGT Logo">
+    BlueGGT
+  </div>
+  <button id="newChatBtn">Neuer Chat</button>
+</header>
+
+<main>
+  <div id="chatbox">
+    <img id="chat-profile" src="https://i.imgur.com/RuRTBMD.png" alt="BlueGGT Icon">
+    <div id="chat-placeholder">BlueGGT – Bereitgestellt vom Blue Team ⚡</div>
+  </div>
+  <div id="input-area">
+    <input type="text" id="userInput" placeholder="Deine Frage hier..." autocomplete="off" />
+    <button id="sendBtn" disabled>Senden</button>
+  </div>
+</main>
+
+<script>
+const CEO = "Kuba_e45";
+const chatbox = document.getElementById("chatbox");
+const placeholder = document.getElementById("chat-placeholder");
+const userInput = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+const newChatBtn = document.getElementById("newChatBtn");
+const chatProfile = document.getElementById("chat-profile");
+
+function updatePlaceholder() {
+  const hasMessages = Array.from(chatbox.children).some(c => c.classList.contains("message"));
+  placeholder.style.display = hasMessages ? "none" : "block";
+  chatProfile.style.display = hasMessages ? "none" : "block";
+}
+
+userInput.addEventListener("input", () => {
+  sendBtn.disabled = userInput.value.trim() === "";
+  updatePlaceholder();
+});
+
+function addMessage(text, sender) {
+  const div = document.createElement("div");
+  div.classList.add("message", sender);
+  div.innerHTML = text; // <-- HTML wird jetzt korrekt angezeigt
+  chatbox.appendChild(div);
+  chatbox.scrollTop = chatbox.scrollHeight;
+  updatePlaceholder();
+}
+
+function addTyping() {
+  const typingDiv = document.createElement("div");
+  typingDiv.classList.add("message", "bot");
+  typingDiv.id = "typingIndicator";
+  typingDiv.innerHTML = `<span class="typing"><span></span><span></span><span></span></span> BlueGGT schreibt...`;
+  chatbox.appendChild(typingDiv);
+  chatbox.scrollTop = chatbox.scrollHeight;
+  updatePlaceholder();
+}
+
+function removeTyping() {
+  const typingDiv = document.getElementById("typingIndicator");
+  if (typingDiv) typingDiv.remove();
+  updatePlaceholder();
+}
+
+function getBotResponse(input) {
+  const textLower = input.toLowerCase();
+  const faqs = [
+    {keywords: ["ceo"], answer: `Der Blue CEO heißt ${CEO}.`},
+    {keywords: ["gründung", "erstellt"], answer: "Blue wurde im Jahr 2024 gegründet."},
+    {keywords: ["produkt", "produkte"], answer: "Blue verkauft innovative Softwarelösungen für Unternehmen."},
+    {keywords: ["kontakt", "erreichen"], answer: "Du kannst Blue per E-Mail unter info.blue.bot@gmail.com erreichen oder über ihren Discord Server."},
+    {keywords: ["hey", "hallo", "hi"], answer: "Hey, wie kann ich dir weiterhelfen?"},
+    {keywords: ["funktionen", "features"], answer: `<p><b>Blue ⚡ bietet dir viele Features, unter anderem:</b></p>
+<ul>
+  <li>🌍 Globalchat – verbinde dich mit anderen Servern</li>
+  <li>🎟️ Support-System – schnelle Hilfe & Tickets</li>
+  <li>🔨 Moderation – kicken, bannen, muten & mehr</li>
+  <li>🎵 Musik-System – Songs abspielen, Playlists speichern</li>
+  <li>🎮 Mini-Games – für Spaß und Abwechslung</li>
+  <li>⚡ …und vieles mehr!</li>
+</ul>`
+},
+    {keywords: ["bewerben", "bewerbung"], answer: "Ja! Die Bewerbungen sind offen. Schau auf dem Blue Discord vorbei und bewirb dich als Supporter. 🚀"},
+    {keywords: ["bug", "fehler"], answer: "Bug gefunden? Kein Problem! Melde ihn im Discord im #bug-report Kanal. ✅"},
+    {keywords: ["v3"], answer: "Das V3 Update wird am 20.09.2025 um 20:00 Uhr veröffentlicht! ⚡🔥"},
+  ];
+  for (const faq of faqs) {
+    if (faq.keywords.some(k => textLower.includes(k))) return faq.answer;
+  }
+  return "Tut mir leid, darauf habe ich keine Antwort.";
+}
+
+async function sendMessage() {
+  const userText = userInput.value.trim();
+  if (!userText) return;
+  addMessage(`Du: ${userText}`, "user");
+  userInput.value = "";
+  sendBtn.disabled = true;
+
+  addTyping();
+  await new Promise(r => setTimeout(r, 1500));
+  removeTyping();
+
+  const botReply = getBotResponse(userText);
+  addMessage(`BlueGGT: ${botReply}`, "bot");
+}
+
+sendBtn.addEventListener("click", sendMessage);
+userInput.addEventListener("keydown", e => { if(e.key==="Enter" && !sendBtn.disabled) sendMessage(); });
+
+newChatBtn.addEventListener("click", () => {
+  chatbox.innerHTML = "";
+  chatbox.appendChild(chatProfile);
+  chatbox.appendChild(placeholder);
+  userInput.value = "";
+  sendBtn.disabled = true;
+  updatePlaceholder();
+});
+
+updatePlaceholder();
+userInput.focus();
+</script>
+</body>
+</html>

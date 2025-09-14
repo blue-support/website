@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Support ⚡</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-slide.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 50, 0.8);
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: white;
+      position: relative;
+    }
+
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .menu {
+      position: absolute;
+      top: 65px;
+      left: 15px;
+      background-color: rgba(0, 0, 50, 0.95);
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+      vertical-align: middle;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: rgba(255, 140, 0, 0.9);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      width: 320px;
+      height: 600px;
+      overflow-y: auto;
+      flex-shrink: 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .box::-webkit-scrollbar {
+      display: none;
+    }
+
+    .box h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .update-box h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 5px;
+    }
+
+    .update-box p {
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin-bottom: 20px;
+    }
+
+    .team-role {
+      margin-bottom: 20px;
+    }
+    .team-role-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+    .team-member img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .main-content {
+      background-color: rgba(0, 0, 50, 0.75);
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 600px;
+      max-height: 600px;
+      color: white;
+      text-align: center;
+      flex-grow: 1;
+      min-width: 320px;
+      overflow-y: auto;
+      box-shadow: 0 0 20px rgba(0,0,50,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 600px;
+    }
+
+    .main-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 50, 0.7);
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .footer a {
+      color: #ffffff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1000px) {
+      .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+      }
+      .box, .main-content {
+        width: 90vw !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <div class="navbar fade-slide">
+  <!-- Hamburger links mit Text -->
+  <div style="display: flex; align-items: center; gap: 5px; cursor: pointer;" onclick="toggleMenu()">
+    <div class="menu-toggle">☰</div>
+    <span style="font-size: 16px;">Menü</span>
+  </div>
+
+  <!-- Titel und Profilbild zentriert -->
+  <div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px;">
+    <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
+    <span>Blue Support ⚡</span>
+  </div>
+</div>
+
+
+  <div class="menu" id="menu">
+    <a href="partners.html">Partners</a>
+    <a href="cmds.html">Bot Commands</a>
+    <a href="generator.html">QR Generator</a>
+    <a href="snake.html">Blue Snake (Game)</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
+  </div>
+
+  <div class="container">
+    <div class="box update-box fade-slide" id="updateBox">
+      <h1>Letzten Updates</h1>
+      <h2>Version: 3.0.0 UPDATE ⚡</h2>
+      <p>Das <strong>V3 Update</strong> wird am <strong>20.09.2025</strong> veröffentlicht! 🔥</p>
+    </div>
+
+    <div class="main-content fade-slide">
+      <h1>Welcome to the Blue Website! ⚡</h1>
+      <div class="description">
+        Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du hier genau richtig! Unser Blue ⚡ Bot sorgt für Ordnung, Unterhaltung und alles, was du für deinen Server brauchst – ohne unnötigen Schnickschnack. Einfach, effizient und immer am Start. Überzeug dich selbst! 🔥
+      </div>
+      <div class="button-group">
+        <a class="btn" href="https://discord.gg/wQgNPNSYrG" target="_blank">Join Discord</a>
+        <a class="btn" href="features.html">Features</a>
+      </div>
+    </div>
+
+    <div class="box team-box fade-slide" id="teamBox">
+      <h1>Teammitglieder</h1>
+    </div>
+  </div>
+
+  <div class="footer fade-slide">
+    <a href="privacy.html">Privacy</a> |
+    <a href="tos.html">ToS</a> |
+    <a href="impressum.html">Impressum</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    window.addEventListener('load', () => {
+      document.body.style.overflow = 'hidden';
+      const fadeEls = document.querySelectorAll('.fade-slide');
+      fadeEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+          if (i === fadeEls.length - 1) {
+            setTimeout(() => {
+              document.body.style.overflow = 'auto';
+            }, 600);
+          }
+        }, i * 300);
+      });
+
+      const teamData = {
+        "CEO": [
+          {
+            username: "Kuba_e45",
+            avatar: "https://i.imgur.com/FcASN3X.jpg"
+          }
+        ],
+        "Head Supporter": [
+          {
+            username: "SchwiiGPT",
+            avatar: "https://i.imgur.com/KP1CVzc.png"
+          },
+          {
+            username: "Melina",
+            avatar: "https://images-ext-1.discordapp.net/external/3G2-wuD48XGsXPyNMcAQgclsNEZyJ1mbcrmS36EemWI/https/cdn.discordapp.com/avatars/1321500430571933697/c93f13b8bb08ca7c7744ee97c71f66e2.webp?format=webp"
+          }
+        ],
+        "Trial Supporter": [
+         {
+           username: "ByteCodes_",
+           avatar: "https://images-ext-1.discordapp.net/external/5suMP7uhiMdGTwwV86ox2h2CN4OiqQkg0b3oWnBATj8/https/cdn.discordapp.com/avatars/1372872420335030384/af684bf73ddeddf15dec25cc8f0e9f34.webp?format=webp"
+         }
+        ],
+      };
+
+      const teamBox = document.getElementById('teamBox');
+
+      function renderTeam(data) {
+        for (const role in data) {
+          const roleDiv = document.createElement('div');
+          roleDiv.classList.add('team-role');
+
+          const roleTitle = document.createElement('div');
+          roleTitle.classList.add('team-role-title');
+          roleTitle.textContent = role + ":";
+
+          roleDiv.appendChild(roleTitle);
+
+          data[role].forEach(member => {
+            const memberDiv = document.createElement('div');
+            memberDiv.classList.add('team-member');
+
+            const img = document.createElement('img');
+            img.src = member.avatar;
+            img.alt = member.username;
+
+            const span = document.createElement('span');
+            span.textContent = member.username;
+
+            memberDiv.appendChild(img);
+            memberDiv.appendChild(span);
+            roleDiv.appendChild(memberDiv);
+          });
+
+          teamBox.appendChild(roleDiv);
+        }
+      }
+
+      renderTeam(teamData);
+    });
+  </script>
+</body>
+</html>

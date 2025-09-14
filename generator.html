@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Generator ⚡</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .generator-box {
+      background: rgba(0, 0, 50, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00f0ff, 0 0 60px #0077ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 350px;
+      width: 90vw;
+      opacity: 0;
+      transform: translate(-200%, -200%) rotate(-30deg);
+      animation: drunkSlideIn 3.5s ease-out forwards;
+    }
+
+    @keyframes drunkSlideIn {
+      0%   { transform: translate(-200%, -200%) rotate(-30deg); opacity: 0; }
+      20%  { transform: translate(-100%, -80%) rotate(10deg); opacity: 0.3; }
+      40%  { transform: translate(-40%, -20%) rotate(-10deg); opacity: 0.6; }
+      60%  { transform: translate(10%, 10%) rotate(5deg); opacity: 0.8; }
+      80%  { transform: translate(-5%, 0%) rotate(-2deg); opacity: 1; }
+      100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+        animation: pop 0.3s ease-in-out;
+      }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 10px;
+      border: 2px solid #00f0ff;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      width: 100%;
+      max-width: 400px;
+      outline: none;
+      transition: box-shadow 0.4s;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #0099ff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    canvas {
+      border-radius: 20px;           /* Runde Ecken sichtbar auf der Webseite */
+      background: white;
+      max-width: 100%;
+      height: auto;
+      display: none;
+      margin: 0 auto;
+      border: 4px solid #00f0ff;    /* Blaue Umrandung nur auf der Webseite */
+      box-sizing: border-box;
+    }
+
+    #downloadBtn {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="generator-box" id="box">
+    <h2>QR Code Generator ⚡</h2>
+    <input type="text" id="titleInput" maxlength="20" placeholder="Titel (Pflicht)" />
+    <input type="text" id="urlInput" placeholder="Link (Pflicht)" />
+    <input type="file" id="logoInput" accept="image/*" />
+    <button onclick="generateQRCode()">Generieren</button>
+    <canvas id="qrCanvas" width="300" height="380"></canvas>
+    <button onclick="downloadQR()" id="downloadBtn">Download QR-Code</button>
+  </div>
+
+  <script>
+    async function generateQRCode() {
+      const url = document.getElementById('urlInput').value.trim();
+      const title = document.getElementById('titleInput').value.trim().substring(0, 20);
+      const canvas = document.getElementById('qrCanvas');
+      const ctx = canvas.getContext('2d');
+      const downloadBtn = document.getElementById('downloadBtn');
+
+      if (!title) {
+        alert('Titel ist Pflicht!');
+        return;
+      }
+      if (!url || !isValidUrl(url)) {
+        alert('Bitte eine gültige URL eingeben!');
+        return;
+      }
+
+      canvas.style.display = 'block';
+      downloadBtn.style.display = 'block';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      try {
+        // Abgerundete Maske für den QR-Code und alles zeichnen
+        const radius = 30; // Eckenradius
+        ctx.save();
+        roundRect(ctx, 0, 0, canvas.width, canvas.height, radius);
+        ctx.clip();
+
+        // QR-Code generieren auf temporärem Canvas
+        const qrCanvas = document.createElement('canvas');
+        await QRCode.toCanvas(qrCanvas, url, { width: 300, margin: 1 });
+
+        ctx.drawImage(qrCanvas, 0, 0);
+
+        // Hintergrund für Titel
+        ctx.fillStyle = '#001F3F';
+        ctx.fillRect(0, 300, 300, 80);
+
+        // Titel zeichnen
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 18px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(title, 150, 345);
+
+        const file = document.getElementById('logoInput').files[0];
+        if (file) {
+          const img = new Image();
+          const reader = new FileReader();
+
+          reader.onload = function(e) {
+            img.onload = () => {
+              ctx.save();
+              ctx.beginPath();
+              ctx.arc(150, 150, 40, 0, 2 * Math.PI);
+              ctx.closePath();
+              ctx.clip();
+              ctx.drawImage(img, 110, 110, 80, 80);
+
+              // Blaue Umrandung um Logo (im Bild)
+              ctx.beginPath();
+              ctx.arc(150, 150, 40, 0, 2 * Math.PI);
+              ctx.lineWidth = 4;
+              ctx.strokeStyle = '#00f0ff';
+              ctx.stroke();
+
+              ctx.restore();
+            };
+            img.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+        }
+        ctx.restore();
+
+      } catch (e) {
+        alert('Fehler beim Generieren des QR-Codes. Bitte überprüfe die URL.');
+        console.error(e);
+      }
+    }
+
+    function downloadQR() {
+      const titleRaw = document.getElementById('titleInput').value.trim().substring(0, 20).toLowerCase();
+      const safeTitle = titleRaw.replace(/[^a-z0-9]/g, '-') || 'qr';
+      const link = document.createElement('a');
+      link.download = `${safeTitle}.qr-code.png`;
+
+      // Download ohne CSS-Rahmen, nur das Canvas-Bild (mit runden Ecken, da im Canvas geclippt)
+      link.href = document.getElementById('qrCanvas').toDataURL();
+      link.click();
+    }
+
+    function isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    // Hilfsfunktion: Rundes Rechteck im Canvas zeichnen
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+  </script>
+</body>
+</html>

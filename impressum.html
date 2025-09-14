@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue - Impressum ⚡</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('https://i.imgur.com/0ks9X2Q.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .content-wrapper {
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .content-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .impressum-box {
+      max-width: 800px;
+      background-color: rgba(0, 0, 50, 0.8);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      white-space: pre-line;
+    }
+
+    .highlight {
+      color: orange;
+      font-weight: bold;
+    }
+
+    a {
+      color: orange;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="impressum-box">
+      <h1>Impressum</h1>
+
+      <p><span class="highlight">Angaben gemäß § 5 TMG (Telemediengesetz)</span></p>
+
+      <h2>Diensteanbieter:</h2>
+      <p>Blue Moderation ⚡<br />
+      Blue ⚡<br />
+      45141 Essen<br />
+      Deutschland</p>
+
+      <h2>Vertreten durch:</h2>
+      <p>Jakub Debski<br />
+      (CEO)</p>
+
+      <h2>Kontakt:</h2>
+      <p><span class="highlight">📬 Discord-Support:</span> @kuba_e450</p>
+      <p><span class="highlight">📨 E-Mail:</span> info.blue.bot@gmail.com</p>
+      <p><span class="highlight">📍 Support-Server:</span> <a href="https://discord.gg/wQgNPNSYrG" target="_blank">https://discord.gg/wQgNPNSYrG</a></p>
+
+      <h2>Haftungsausschluss (Disclaimer)</h2>
+      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+
+    </div>
+  </div>
+</body>
+</html>

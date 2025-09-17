@@ -280,6 +280,7 @@ function getBotResponse(input) {
     {keywords: ["bewerben", "bewerbung"], answer: "Ja! Die Bewerbungen sind offen. Schau auf dem Blue Discord vorbei und bewirb dich als Supporter. 🚀"},
     {keywords: ["bug", "fehler"], answer: "Bug gefunden? Kein Problem! Melde ihn im Discord im #bug-report Kanal. ✅"},
     {keywords: ["v3"], answer: "Das V3 Update wird am 20.09.2025 um 20:00 Uhr veröffentlicht! ⚡🔥"},
+    {keywords: ["über"], answer: "Keine Ahnung bro, ich bin nicht der CEO du Fisch."},
   ];
   for (const faq of faqs) {
     if (faq.keywords.some(k => textLower.includes(k))) return faq.answer;

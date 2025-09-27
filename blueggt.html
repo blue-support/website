@@ -64,6 +64,19 @@ header button:hover {
   background-color: rgba(255,255,255,0.2);
 }
 
+/* BETA Badge */
+.beta-badge {
+  background-color: #0066ff; /* Blau */
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 8px; /* runde Ecken */
+  text-transform: uppercase;
+  box-shadow: 0 0 5px rgba(0, 102, 255, 0.6);
+}
+
 main {
   flex: 1;
   display: flex;
@@ -198,7 +211,8 @@ main {
 <header>
   <div class="title-container">
     <img id="header-logo" src="https://i.imgur.com/RuRTBMD.png" alt="BlueGGT Logo">
-    BlueGGT
+    BlueGGT 
+    <span class="beta-badge">BETA</span>
   </div>
   <button id="newChatBtn">Neuer Chat</button>
 </header>
@@ -237,7 +251,7 @@ userInput.addEventListener("input", () => {
 function addMessage(text, sender) {
   const div = document.createElement("div");
   div.classList.add("message", sender);
-  div.innerHTML = text; // <-- HTML wird jetzt korrekt angezeigt
+  div.innerHTML = text; // HTML erlaubt für Bot
   chatbox.appendChild(div);
   chatbox.scrollTop = chatbox.scrollHeight;
   updatePlaceholder();
@@ -275,8 +289,7 @@ function getBotResponse(input) {
   <li>🎵 Musik-System – Songs abspielen, Playlists speichern</li>
   <li>🎮 Mini-Games – für Spaß und Abwechslung</li>
   <li>⚡ …und vieles mehr!</li>
-</ul>`
-},
+</ul>`},
     {keywords: ["bewerben", "bewerbung"], answer: "Ja! Die Bewerbungen sind offen. Schau auf dem Blue Discord vorbei und bewirb dich als Supporter. 🚀"},
     {keywords: ["bug", "fehler"], answer: "Bug gefunden? Kein Problem! Melde ihn im Discord im #bug-report Kanal. ✅"},
     {keywords: ["v3"], answer: "Das V3 Update wird am 20.09.2025 um 20:00 Uhr veröffentlicht! ⚡🔥"},
@@ -320,3 +333,4 @@ userInput.focus();
 </script>
 </body>
 </html>
+

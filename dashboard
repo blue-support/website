@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Discord Embed Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+    input, textarea, button { width: 100%; margin: 5px 0; padding: 10px; }
+    button { background: #5865F2; color: white; border: none; cursor: pointer; }
+    button:hover { background: #4752C4; }
+  </style>
+</head>
+<body>
+  <h1>Embed Builder</h1>
+
+  <!-- Discord Login Button -->
+  <a href="https://your-replit-backend-url/login">
+    <button>Mit Discord anmelden</button>
+  </a>
+
+  <!-- Embed Builder -->
+  <form id="embedForm">
+    <input type="text" id="title" placeholder="Titel">
+    <textarea id="description" placeholder="Beschreibung"></textarea>
+    <input type="color" id="color" value="#5865F2">
+    <button type="submit">Embed senden</button>
+  </form>
+
+  <script>
+    document.getElementById("embedForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const embedData = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        color: document.getElementById("color").value,
+      };
+
+      // Anfrage ans Backend (Replit)
+      const res = await fetch("https://your-replit-backend-url/api/send-embed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(embedData),
+      });
+
+      if (res.ok) {
+        alert("Embed gesendet!");
+      } else {
+        alert("Fehler beim Senden.");
+      }
+    });
+  </script>
+</body>
+</html>

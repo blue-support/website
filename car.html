@@ -118,7 +118,7 @@
         }
 
         .bmw-slide {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a1a2d 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a0a0a 100%);
         }
 
         .porsche-slide {
@@ -168,7 +168,7 @@
         }
 
         .mercedes-slide .car-name { color: #ff0000; }
-        .bmw-slide .car-name { color: #0066ff; }
+        .bmw-slide .car-name { color: #bb0a1e; }
         .porsche-slide .car-name { color: #ffaa00; }
 
         .specs {
@@ -187,7 +187,7 @@
         }
 
         .mercedes-slide .spec-item { border-color: #ff0000; }
-        .bmw-slide .spec-item { border-color: #0066ff; }
+        .bmw-slide .spec-item { border-color: #bb0a1e; }
         .porsche-slide .spec-item { border-color: #ffaa00; }
 
         .spec-item:hover {
@@ -275,7 +275,7 @@
             animation-delay: 0.1s;
         }
         .comparison-card:nth-child(2) { 
-            border-color: #0066ff; 
+            border-color: #bb0a1e; 
             animation-delay: 0.2s;
         }
         .comparison-card:nth-child(3) { 
@@ -309,8 +309,10 @@
         .stat-row {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            align-items: center;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            gap: 20px;
         }
 
         .stat-label {
@@ -402,7 +404,7 @@
         <div class="slide active intro-slide">
             <div class="intro-content">
                 <h1 class="main-title">Performance Legends</h1>
-                <p class="subtitle">Mercedes CLS 63 AMG | BMW M5 | Porsche 911 GT3 RS</p>
+                <p class="subtitle">Mercedes CLS 63 AMG | Audi RS6 Avant | Porsche 911 GT3 RS</p>
             </div>
         </div>
 
@@ -433,30 +435,30 @@
                 </div>
                 <div class="car-visual">
                     <div class="car-image">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/18/13/23/automobile-1834274_1280.jpg" alt="Mercedes CLS 63 AMG" onerror="this.parentElement.innerHTML='🏎️'">
+                        <img src="https://i.imgur.com/YgXV8O7.jpg" alt="Mercedes CLS 63 AMG" onerror="this.parentElement.innerHTML='🏎️'">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: BMW -->
+        <!-- Slide 3: Audi -->
         <div class="slide car-slide bmw-slide">
             <div class="car-content">
                 <div class="car-info">
-                    <div class="car-logo">BMW M</div>
-                    <h2 class="car-name">M5</h2>
+                    <div class="car-logo">Audi Sport</div>
+                    <h2 class="car-name">RS6 Avant</h2>
                     <div class="specs">
                         <div class="spec-item">
                             <div class="spec-label">Leistung</div>
-                            <div class="spec-value">625 PS</div>
+                            <div class="spec-value">630 PS</div>
                         </div>
                         <div class="spec-item">
                             <div class="spec-label">Drehmoment</div>
-                            <div class="spec-value">750 Nm</div>
+                            <div class="spec-value">850 Nm</div>
                         </div>
                         <div class="spec-item">
                             <div class="spec-label">0-100 km/h</div>
-                            <div class="spec-value">3,3 Sek</div>
+                            <div class="spec-value">3,4 Sek</div>
                         </div>
                         <div class="spec-item">
                             <div class="spec-label">Höchstgeschw.</div>
@@ -466,7 +468,7 @@
                 </div>
                 <div class="car-visual">
                     <div class="car-image">
-                        <img src="https://cdn.pixabay.com/photo/2017/03/05/00/34/panorama-2117310_1280.jpg" alt="BMW M5" onerror="this.parentElement.innerHTML='🏎️'">
+                        <img src="https://i.imgur.com/NYGcgVp.jpg" alt="Audi RS6 Avant" onerror="this.parentElement.innerHTML='🏎️'">
                     </div>
                 </div>
             </div>
@@ -499,7 +501,7 @@
                 </div>
                 <div class="car-visual">
                     <div class="car-image">
-                        <img src="https://cdn.pixabay.com/photo/2016/02/13/13/11/oldtimer-1197800_1280.jpg" alt="Porsche 911 GT3 RS" onerror="this.parentElement.innerHTML='🏎️'">
+                        <img src="https://i.imgur.com/2XMiMoR.jpg" alt="Porsche 911 GT3 RS" onerror="this.parentElement.innerHTML='🏎️'">
                     </div>
                 </div>
             </div>
@@ -532,15 +534,15 @@
                         </div>
                     </div>
                     <div class="comparison-card">
-                        <div class="card-header" style="color: #0066ff;">BMW M5</div>
+                        <div class="card-header" style="color: #bb0a1e;">Audi RS6 Avant</div>
                         <div class="card-stats">
                             <div class="stat-row">
                                 <span class="stat-label">Hubraum</span>
-                                <span class="stat-value">4,4L V8 BiTurbo</span>
+                                <span class="stat-value">4,0L V8 BiTurbo</span>
                             </div>
                             <div class="stat-row">
                                 <span class="stat-label">Antrieb</span>
-                                <span class="stat-value">M xDrive</span>
+                                <span class="stat-value">Quattro</span>
                             </div>
                             <div class="stat-row">
                                 <span class="stat-label">Zylinder</span>
@@ -548,7 +550,7 @@
                             </div>
                             <div class="stat-row">
                                 <span class="stat-label">Charakter</span>
-                                <span class="stat-value">Sport & Alltag</span>
+                                <span class="stat-value">Kombi-Rakete</span>
                             </div>
                         </div>
                     </div>

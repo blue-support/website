@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Legends</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: #000;
+            color: #fff;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 10;
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        /* Intro Slide */
+        .intro-slide {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-slide::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .intro-content {
+            z-index: 2;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: title-glow 3s ease-in-out infinite;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        @keyframes title-glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        .subtitle {
+            font-size: 2em;
+            color: #888;
+            margin-top: 20px;
+            animation: fade-in 2s ease-in;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Car Slides */
+        .car-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mercedes-slide {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0a0a 100%);
+        }
+
+        .bmw-slide {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a1a2d 100%);
+        }
+
+        .porsche-slide {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0a 100%);
+        }
+
+        .car-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1400px;
+            align-items: center;
+        }
+
+        .car-info {
+            animation: slide-in-left 1s ease-out;
+        }
+
+        @keyframes slide-in-left {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .car-visual {
+            animation: slide-in-right 1s ease-out;
+        }
+
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .car-logo {
+            font-size: 1.5em;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .car-name {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .mercedes-slide .car-name { color: #ff0000; }
+        .bmw-slide .car-name { color: #0066ff; }
+        .porsche-slide .car-name { color: #ffaa00; }
+
+        .specs {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .spec-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .mercedes-slide .spec-item { border-color: #ff0000; }
+        .bmw-slide .spec-item { border-color: #0066ff; }
+        .porsche-slide .spec-item { border-color: #ffaa00; }
+
+        .spec-item:hover {
+            transform: translateX(10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .spec-label {
+            font-size: 0.9em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .spec-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .car-image {
+            width: 100%;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6em;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Comparison Slide */
+        .comparison-slide {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .comparison-content {
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .comparison-title {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff0000, #0066ff, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .comparison-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+            border-top: 4px solid;
+            animation: fade-in-up 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .comparison-card:nth-child(1) { 
+            border-color: #ff0000; 
+            animation-delay: 0.1s;
+        }
+        .comparison-card:nth-child(2) { 
+            border-color: #0066ff; 
+            animation-delay: 0.2s;
+        }
+        .comparison-card:nth-child(3) { 
+            border-color: #ffaa00; 
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .card-header {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator-dot.active {
+            background: #fff;
+            transform: scale(1.3);
+        }
+
+        /* End Slide */
+        .end-slide {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            text-align: center;
+        }
+
+        .end-title {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .end-text {
+            font-size: 1.5em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Intro -->
+        <div class="slide active intro-slide">
+            <div class="intro-content">
+                <h1 class="main-title">Performance Legends</h1>
+                <p class="subtitle">Mercedes CLS 63 AMG | BMW M5 | Porsche 911 GT3 RS</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Mercedes -->
+        <div class="slide car-slide mercedes-slide">
+            <div class="car-content">
+                <div class="car-info">
+                    <div class="car-logo">Mercedes-AMG</div>
+                    <h2 class="car-name">CLS 63 AMG</h2>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Leistung</div>
+                            <div class="spec-value">585 PS</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Drehmoment</div>
+                            <div class="spec-value">800 Nm</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">0-100 km/h</div>
+                            <div class="spec-value">3,5 Sek</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Höchstgeschw.</div>
+                            <div class="spec-value">300 km/h</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-visual">
+                    <div class="car-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/18/13/23/automobile-1834274_1280.jpg" alt="Mercedes CLS 63 AMG" onerror="this.parentElement.innerHTML='🏎️'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: BMW -->
+        <div class="slide car-slide bmw-slide">
+            <div class="car-content">
+                <div class="car-info">
+                    <div class="car-logo">BMW M</div>
+                    <h2 class="car-name">M5</h2>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Leistung</div>
+                            <div class="spec-value">625 PS</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Drehmoment</div>
+                            <div class="spec-value">750 Nm</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">0-100 km/h</div>
+                            <div class="spec-value">3,3 Sek</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Höchstgeschw.</div>
+                            <div class="spec-value">305 km/h</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-visual">
+                    <div class="car-image">
+                        <img src="https://cdn.pixabay.com/photo/2017/03/05/00/34/panorama-2117310_1280.jpg" alt="BMW M5" onerror="this.parentElement.innerHTML='🏎️'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Porsche -->
+        <div class="slide car-slide porsche-slide">
+            <div class="car-content">
+                <div class="car-info">
+                    <div class="car-logo">Porsche</div>
+                    <h2 class="car-name">911 GT3 RS</h2>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Leistung</div>
+                            <div class="spec-value">525 PS</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Drehmoment</div>
+                            <div class="spec-value">465 Nm</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">0-100 km/h</div>
+                            <div class="spec-value">3,2 Sek</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Höchstgeschw.</div>
+                            <div class="spec-value">296 km/h</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-visual">
+                    <div class="car-image">
+                        <img src="https://cdn.pixabay.com/photo/2016/02/13/13/11/oldtimer-1197800_1280.jpg" alt="Porsche 911 GT3 RS" onerror="this.parentElement.innerHTML='🏎️'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Comparison -->
+        <div class="slide comparison-slide">
+            <div class="comparison-content">
+                <h2 class="comparison-title">Direkter Vergleich</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <div class="card-header" style="color: #ff0000;">Mercedes CLS 63</div>
+                        <div class="card-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Hubraum</span>
+                                <span class="stat-value">4,0L V8 BiTurbo</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Antrieb</span>
+                                <span class="stat-value">4MATIC+</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Zylinder</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Charakter</span>
+                                <span class="stat-value">Eleganz & Power</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="card-header" style="color: #0066ff;">BMW M5</div>
+                        <div class="card-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Hubraum</span>
+                                <span class="stat-value">4,4L V8 BiTurbo</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Antrieb</span>
+                                <span class="stat-value">M xDrive</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Zylinder</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Charakter</span>
+                                <span class="stat-value">Sport & Alltag</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="card-header" style="color: #ffaa00;">Porsche GT3 RS</div>
+                        <div class="card-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Hubraum</span>
+                                <span class="stat-value">4,0L Boxer</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Antrieb</span>
+                                <span class="stat-value">Hinterrad</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Zylinder</span>
+                                <span class="stat-value">6</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Charakter</span>
+                                <span class="stat-value">Pure Rennstrecke</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: End -->
+        <div class="slide end-slide">
+            <h2 class="end-title">Drei Legenden<br>Eine Leidenschaft</h2>
+            <p class="end-text">Performance ohne Kompromisse</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="prevSlide()">‹</button>
+        <button class="nav-btn" onclick="nextSlide()">›</button>
+    </div>
+
+    <div class="slide-indicator">
+        <div class="indicator-dot active" onclick="goToSlide(0)"></div>
+        <div class="indicator-dot" onclick="goToSlide(1)"></div>
+        <div class="indicator-dot" onclick="goToSlide(2)"></div>
+        <div class="indicator-dot" onclick="goToSlide(3)"></div>
+        <div class="indicator-dot" onclick="goToSlide(4)"></div>
+        <div class="indicator-dot" onclick="goToSlide(5)"></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator-dot');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('prev');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides.forEach(slide => slide.classList.remove('prev'));
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Touch navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextSlide();
+            if (touchEndX - touchStartX > 50) prevSlide();
+        });
+    </script>
+</body>
+</html>

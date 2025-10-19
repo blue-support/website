@@ -40,14 +40,11 @@
       font-weight: bold;
       display: flex;
       align-items: center;
-      justify-content: center;
       color: white;
       position: relative;
     }
 
     .menu-wrapper {
-      position: absolute;
-      left: 20px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -65,13 +62,15 @@
       border-radius: 50%;
       border: 2px solid white;
       object-fit: cover;
+      margin-left: auto;
+      margin-right: 10px;
     }
 
-    .dropdown {
+    .menu {
       position: absolute;
       top: 60px;
       left: 20px;
-      background-color: rgba(0, 0, 50, 0.95);
+      background-color: rgba(0,0,50,0.95);
       border-radius: 8px;
       padding: 10px;
       display: none;
@@ -79,20 +78,20 @@
       gap: 10px;
       z-index: 1000;
       font-size: 16px;
-      min-width: 150px;
+      min-width: 180px;
     }
 
-    .dropdown a {
+    .menu a {
       color: white;
       text-decoration: none;
     }
 
-    .dropdown a:hover {
+    .menu a:hover {
       text-decoration: underline;
     }
 
     .main {
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -117,27 +116,28 @@
 </head>
 <body>
 
-<div class="navbar fade-slide">
-  <div class="menu-wrapper" onclick="toggleMenu()">
-    <div class="menu-icon">☰</div>
-    <div>Menü</div>
+  <!-- Navbar -->
+  <div class="navbar fade-slide">
+    <div class="menu-wrapper" onclick="toggleMenu()">
+      <div class="menu-icon">☰</div>
+      <div>Menü</div>
+    </div>
+
+    <span>Blue Support ⚡</span>
+    <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
+
+    <div class="menu" id="menu">
+      <a href="partners.html">Partners</a>
+      <a href="https://dashboard.blue-lol.de">Dashboard</a>
+      <a href="blueggt.html">BlueGGT - ChatBot</a>
+      <a href="cmds.html">Bot Commands</a>
+      <a href="generator.html">QR Generator</a>
+      <a href="snake.html">Blue Snake (Game)</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
+    </div>
   </div>
 
-  <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" style="margin-right: 10px;" />
-  <span>Blue Support ⚡</span>
-
-  <div class="menu" id="menu">
-    <a href="partners.html">Partners</a>
-    <a href="https://dashboard.blue-lol.de">Dashboard</a>
-    <a href="blueggt.html">BlueGGT - ChatBot</a>
-    <a href="cmds.html">Bot Commands</a>
-    <a href="generator.html">QR Generator</a>
-    <a href="snake.html">Blue Snake (Game)</a>
-    <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
-  </div>
-</div>
-
-
+  <!-- Main Content -->
   <div class="main fade-slide">
     <h1>Bot Commands</h1>
     <div class="command"><strong>/help</strong> – Zeigt alle Befehle an</div>
@@ -160,21 +160,21 @@
     <div class="command"><strong>/kick</strong> – Kickt einen User mit Grund. (Admin only)</div>
     <div class="command"><strong>/mute</strong> – Muted (Timeout) einen User für eine bestimmte Dauer. (Admin Only)</div>
     <div class="command"><strong>/unmute</strong> – Entmutet (Timeout Ende) einen User manuell. (Admin only)</div>
-    <!-- Weitere Commands kannst du hier einfügen -->
   </div>
 
+  <!-- Scripts -->
   <script>
+    // Menü toggle
     function toggleMenu() {
-      const menu = document.getElementById("dropdownMenu");
+      const menu = document.getElementById("menu");
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
 
+    // Fade Animation beim Laden
     window.addEventListener('load', () => {
       const fadeEls = document.querySelectorAll('.fade-slide');
       fadeEls.forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, i * 300);
+        setTimeout(() => el.classList.add('visible'), i * 300);
       });
     });
   </script>

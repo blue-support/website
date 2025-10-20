@@ -7,7 +7,8 @@
   <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
   <style>
     html, body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
       color: white;
       background-image: url('https://i.imgur.com/0ks9X2Q.png');
@@ -23,6 +24,7 @@
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
+
     .fade-slide.visible {
       opacity: 1 !important;
       transform: translateY(0) !important;
@@ -61,15 +63,20 @@
       border-radius: 8px;
       z-index: 999;
     }
+
     .menu.visible {
       display: flex;
     }
+
     .menu a {
       color: white;
       text-decoration: none;
       font-size: 18px;
     }
-    .menu a:hover { text-decoration: underline; }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
 
     .profile-container {
       display: flex;
@@ -79,6 +86,7 @@
       flex: 1;
       margin-top: 10px;
     }
+
     .profile-img {
       width: 32px;
       height: 32px;
@@ -114,7 +122,10 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    .box::-webkit-scrollbar { display: none; }
+
+    .box::-webkit-scrollbar {
+      display: none;
+    }
 
     .box h1 {
       text-align: center;
@@ -130,12 +141,38 @@
       border-bottom: 1px solid #fff;
       padding-bottom: 5px;
     }
-    .update-box p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
 
-    .team-role { margin-bottom: 20px; }
-    .team-role-title { font-weight: bold; font-size: 16px; margin-bottom: 6px; }
-    .team-member { display: flex; align-items: center; gap: 10px; margin-left: 10px; font-size: 14px; }
-    .team-member img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid white; }
+    .update-box p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .team-role {
+      margin-bottom: 20px;
+    }
+
+    .team-role-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    .team-member img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
 
     /* Main Content */
     .main-content {
@@ -153,8 +190,17 @@
       flex-direction: column;
       justify-content: center;
     }
-    .main-content h1 { font-size: 28px; margin-bottom: 20px; }
-    .description { font-size: 16px; margin-bottom: 25px; line-height: 1.5; }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
 
     .button-group {
       display: flex;
@@ -162,6 +208,7 @@
       gap: 15px;
       flex-wrap: wrap;
     }
+
     .btn {
       background-color: #007bff;
       color: white;
@@ -175,7 +222,10 @@
       min-width: 140px;
       text-align: center;
     }
-    .btn:hover { background-color: #0056b3; }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
 
     /* Footer */
     .footer {
@@ -184,24 +234,66 @@
       text-align: center;
       font-size: 14px;
     }
-    .footer a { color: #fff; margin: 0 5px; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
+
+    .footer a {
+      color: #fff;
+      margin: 0 5px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
     /* Responsive */
     @media (max-width: 1000px) {
-      .container { flex-direction: column; align-items: center; }
-      .box, .main-content { width: 90vw; height: auto; max-height: none; margin-bottom: 20px; }
-      .main-content { height: auto; }
-      .navbar { justify-content: space-between; }
-      .profile-container { order: 1; margin-top: 0; margin-bottom: 10px; }
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .box, .main-content {
+        width: 90vw;
+        height: auto;
+        max-height: none;
+        margin-bottom: 20px;
+      }
+
+      .main-content {
+        height: auto;
+      }
     }
 
     @media (max-width: 500px) {
-      .navbar { font-size: 18px; padding: 8px 10px; }
-      .main-content h1 { font-size: 22px; }
-      .description { font-size: 14px; }
-      .btn { font-size: 14px; padding: 10px 15px; min-width: 120px; }
-      .menu { top: 50px; left: 5px; right: 5px; }
+      .navbar {
+        font-size: 18px;
+        padding: 8px 10px;
+      }
+
+      .profile-container {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .main-content h1 {
+        font-size: 22px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px 15px;
+        min-width: 120px;
+      }
+
+      .menu {
+        top: 50px;
+        left: 5px;
+        right: 5px;
+      }
     }
   </style>
 </head>
@@ -261,12 +353,12 @@
     window.addEventListener('load', () => {
       const fadeEls = document.querySelectorAll('.fade-slide');
       fadeEls.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i*300);
+        setTimeout(() => el.classList.add('visible'), i * 300);
       });
 
       const teamData = {
-        "CEO": [{username:"Kuba_e45", avatar:"https://i.imgur.com/FcASN3X.jpg"}],
-        "Moderator": [{username:"SchwiiGPT", avatar:"https://i.imgur.com/KP1CVzc.png"}],
+        "CEO": [{ username: "Kuba_e45", avatar: "https://i.imgur.com/FcASN3X.jpg" }],
+        "Moderator": [{ username: "SchwiiGPT", avatar: "https://i.imgur.com/KP1CVzc.png" }],
       };
 
       const teamBox = document.getElementById('teamBox');

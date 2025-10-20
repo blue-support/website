@@ -13,10 +13,9 @@
       background-image: url('https://i.imgur.com/0ks9X2Q.png');
       background-size: cover;
       background-position: center;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
     }
 
     .fade-slide {
@@ -29,73 +28,84 @@
       transform: translateY(0) !important;
     }
 
+    /* Navbar */
     .navbar {
-      background-color: rgba(0, 0, 50, 0.8);
-      padding: 15px;
-      font-size: 24px;
+      background-color: rgba(0, 0, 50, 0.9);
+      padding: 10px 15px;
+      font-size: 20px;
       font-weight: bold;
-      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      color: white;
       position: relative;
+      flex-wrap: wrap;
     }
 
     .menu-toggle {
       font-size: 28px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .menu {
-      position: absolute;
-      top: 65px;
-      left: 15px;
-      background-color: rgba(0, 0, 50, 0.95);
-      padding: 15px;
-      border-radius: 8px;
       display: none;
       flex-direction: column;
       gap: 10px;
+      position: absolute;
+      top: 60px;
+      left: 15px;
+      background-color: rgba(0,0,50,0.95);
+      padding: 15px;
+      border-radius: 8px;
       z-index: 999;
     }
-
+    .menu.visible {
+      display: flex;
+    }
     .menu a {
       color: white;
       text-decoration: none;
       font-size: 18px;
     }
+    .menu a:hover { text-decoration: underline; }
 
-    .menu a:hover {
-      text-decoration: underline;
+    .profile-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      flex: 1;
+      margin-top: 10px;
     }
-
     .profile-img {
       width: 32px;
       height: 32px;
       border-radius: 50%;
       border: 2px solid white;
       object-fit: cover;
-      vertical-align: middle;
     }
 
+    /* Container */
     .container {
       flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 50px;
+      align-items: flex-start;
+      gap: 30px;
       max-width: 1300px;
-      margin: 0 auto;
-      padding: 20px;
+      margin: 20px auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
     }
 
+    /* Boxes */
     .box {
       background-color: rgba(255, 140, 0, 0.9);
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
       color: #fff;
       width: 320px;
       height: 600px;
@@ -104,15 +114,13 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    .box::-webkit-scrollbar {
-      display: none;
-    }
+    .box::-webkit-scrollbar { display: none; }
 
     .box h1 {
       text-align: center;
       margin-top: 0;
       margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
     }
 
@@ -122,148 +130,89 @@
       border-bottom: 1px solid #fff;
       padding-bottom: 5px;
     }
+    .update-box p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
 
-    .update-box p {
-      font-size: 14px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      margin-bottom: 20px;
-    }
+    .team-role { margin-bottom: 20px; }
+    .team-role-title { font-weight: bold; font-size: 16px; margin-bottom: 6px; }
+    .team-member { display: flex; align-items: center; gap: 10px; margin-left: 10px; font-size: 14px; }
+    .team-member img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid white; }
 
-    .team-role {
-      margin-bottom: 20px;
-    }
-    .team-role-title {
-      font-weight: bold;
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-    .team-member {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-left: 10px;
-      font-size: 14px;
-    }
-    .team-member img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
-    }
-
+    /* Main Content */
     .main-content {
       background-color: rgba(0, 0, 50, 0.75);
       border-radius: 12px;
-      padding: 40px;
-      max-width: 600px;
-      max-height: 600px;
+      padding: 30px 20px;
       color: white;
       text-align: center;
-      flex-grow: 1;
-      min-width: 320px;
+      width: 100%;
+      max-width: 600px;
+      height: 600px;
       overflow-y: auto;
       box-shadow: 0 0 20px rgba(0,0,50,0.8);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 600px;
     }
-
-    .main-content h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .description {
-      font-size: 18px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .main-content h1 { font-size: 28px; margin-bottom: 20px; }
+    .description { font-size: 16px; margin-bottom: 25px; line-height: 1.5; }
 
     .button-group {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: wrap;
     }
-
     .btn {
       background-color: #007bff;
       color: white;
-      padding: 15px 30px;
+      padding: 12px 20px;
       border: none;
       border-radius: 8px;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      display: inline-block;
-      min-width: 160px;
+      min-width: 140px;
       text-align: center;
     }
+    .btn:hover { background-color: #0056b3; }
 
-    .btn:hover {
-      background-color: #0056b3;
-    }
-
+    /* Footer */
     .footer {
-      background-color: rgba(0, 0, 50, 0.7);
-      padding: 15px;
+      background-color: rgba(0,0,50,0.7);
+      padding: 10px;
       text-align: center;
       font-size: 14px;
-      flex-shrink: 0;
     }
+    .footer a { color: #fff; margin: 0 5px; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
 
-    .footer a {
-      color: #ffffff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
+    /* Responsive */
     @media (max-width: 1000px) {
-      .container {
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: stretch;
-      }
-      .box, .main-content {
-        width: 90vw !important;
-        max-width: none !important;
-        height: auto !important;
-        max-height: none !important;
-        margin-bottom: 20px;
-      }
-      .main-content {
-        height: auto !important;
-      }
+      .container { flex-direction: column; align-items: center; }
+      .box, .main-content { width: 90vw; height: auto; max-height: none; margin-bottom: 20px; }
+      .main-content { height: auto; }
+      .navbar { justify-content: space-between; }
+      .profile-container { order: 1; margin-top: 0; margin-bottom: 10px; }
+    }
+
+    @media (max-width: 500px) {
+      .navbar { font-size: 18px; padding: 8px 10px; }
+      .main-content h1 { font-size: 22px; }
+      .description { font-size: 14px; }
+      .btn { font-size: 14px; padding: 10px 15px; min-width: 120px; }
+      .menu { top: 50px; left: 5px; right: 5px; }
     }
   </style>
 </head>
 <body>
-
- <div class="navbar fade-slide">
-  <!-- Hamburger links mit Text -->
-  <div style="display: flex; align-items: center; gap: 5px; cursor: pointer;" onclick="toggleMenu()">
-    <div class="menu-toggle">☰</div>
-    <span style="font-size: 16px;">Menü</span>
+  <div class="navbar fade-slide">
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menü</div>
+    <div class="profile-container">
+      <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
+      <span>Blue Support ⚡</span>
+    </div>
   </div>
-
-  <!-- Titel und Profilbild zentriert -->
-  <div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px;">
-    <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
-    <span>Blue Support ⚡</span>
-  </div>
-</div>
-
 
   <div class="menu" id="menu">
     <a href="partners.html">Partners</a>
@@ -306,37 +255,18 @@
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+      document.getElementById('menu').classList.toggle('visible');
     }
 
     window.addEventListener('load', () => {
-      document.body.style.overflow = 'hidden';
       const fadeEls = document.querySelectorAll('.fade-slide');
       fadeEls.forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('visible');
-          if (i === fadeEls.length - 1) {
-            setTimeout(() => {
-              document.body.style.overflow = 'auto';
-            }, 600);
-          }
-        }, i * 300);
+        setTimeout(() => el.classList.add('visible'), i*300);
       });
 
       const teamData = {
-        "CEO": [
-          {
-            username: "Kuba_e45",
-            avatar: "https://i.imgur.com/FcASN3X.jpg"
-          }
-        ],
-        "Moderator": [
-          {
-            username: "SchwiiGPT",
-            avatar: "https://i.imgur.com/KP1CVzc.png"
-          }
-        ],
+        "CEO": [{username:"Kuba_e45", avatar:"https://i.imgur.com/FcASN3X.jpg"}],
+        "Moderator": [{username:"SchwiiGPT", avatar:"https://i.imgur.com/KP1CVzc.png"}],
       };
 
       const teamBox = document.getElementById('teamBox');

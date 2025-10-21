@@ -15,12 +15,19 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden; /* keine horizontale Scrollleiste */
+        }
+
+        /* Scrollbalken unsichtbar */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
         }
 
         /* Obere Leiste */
         .header {
             width: 100%;
-            padding: 10px 20px;
+            padding: 8px 20px;
             background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: center;
@@ -29,33 +36,30 @@
         }
 
         .header img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 3px solid #fff;
         }
 
         .header h1 {
-            font-size: 24px;
+            font-size: 22px;
             margin: 0;
         }
 
         /* Inhalt */
         .container {
-            max-width: 700px;
-            margin: auto;
-            padding: 20px;
+            max-width: 900px; /* breiter */
+            margin: 50px auto;
+            padding: 25px;
             background-color: rgba(0,0,0,0.55);
             border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .container h2 {
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
+            margin-bottom: 25px;
+            font-size: 30px;
         }
 
         /* Aufklappbare Abschnitte */
@@ -63,14 +67,14 @@
             background-color: rgba(255,255,255,0.1);
             color: #fff;
             cursor: pointer;
-            padding: 12px 15px;
+            padding: 14px 18px;
             width: 100%;
             text-align: left;
             border: none;
             outline: none;
             transition: background-color 0.3s ease;
             font-size: 18px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             border-radius: 5px;
         }
 
@@ -89,7 +93,7 @@
         }
 
         .panel {
-            padding: 0 15px;
+            padding: 0 18px;
             background-color: rgba(255,255,255,0.05);
             max-height: 0;
             overflow: hidden;

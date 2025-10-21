@@ -48,9 +48,16 @@
         }
 
         /* Inhalt */
+        .container-wrapper {
+            display: flex;
+            justify-content: center; /* horizontal zentrieren */
+            width: 100%;
+            margin-top: 50px;
+        }
+
         .container {
-            max-width: 900px; /* breiter */
-            margin: 50px auto;
+            width: 80%; /* breiter nach links und rechts */
+            max-width: 1000px;
             padding: 25px;
             background-color: rgba(0,0,0,0.55);
             border-radius: 10px;
@@ -121,40 +128,42 @@
     </div>
 
     <!-- Inhalt -->
-    <div class="container">
-        <h2>Team Anforderungen</h2>
+    <div class="container-wrapper">
+        <div class="container">
+            <h2>Team Anforderungen</h2>
 
-        <button class="accordion">Allgemeine Anforderungen</button>
-        <div class="panel">
-            <ul>
-                <li>Mindestalter: 15 Jahre</li>
-                <li>Aktivität auf dem Server</li>
-                <li>Funktionierendes Mikrofon</li>
-                <li>Respektvoller Umgang mit allen Mitgliedern</li>
-                <li>Grundkenntnisse über Discord</li>
-                <li>Keine Verwarnungen oder schlechten Bemerkungen</li>
-            </ul>
-        </div>
+            <button class="accordion">Allgemeine Anforderungen</button>
+            <div class="panel">
+                <ul>
+                    <li>Mindestalter: 15 Jahre</li>
+                    <li>Aktivität auf dem Server</li>
+                    <li>Funktionierendes Mikrofon</li>
+                    <li>Respektvoller Umgang mit allen Mitgliedern</li>
+                    <li>Grundkenntnisse über Discord</li>
+                    <li>Keine Verwarnungen oder schlechten Bemerkungen</li>
+                </ul>
+            </div>
 
-        <button class="accordion">Anforderungen für Bot Developer</button>
-        <div class="panel">
-            <ul>
-                <li>Alle allgemeinen Anforderungen</li>
-                <li>Kenntnisse in Visual Studio Code</li>
-                <li>Python</li>
-            </ul>
-        </div>
+            <button class="accordion">Anforderungen für Bot Developer</button>
+            <div class="panel">
+                <ul>
+                    <li>Alle allgemeinen Anforderungen</li>
+                    <li>Kenntnisse in Visual Studio Code</li>
+                    <li>Python</li>
+                </ul>
+            </div>
 
-        <button class="accordion">Anforderungen für Web Developer</button>
-        <div class="panel">
-            <ul>
-                <li>Alle allgemeinen Anforderungen</li>
-                <li>Kenntnisse in Visual Studio Code</li>
-                <li>Python</li>
-                <li>HTML & CSS</li>
-                <li>JavaScript</li>
-                <li>Backend-Entwicklung</li>
-            </ul>
+            <button class="accordion">Anforderungen für Web Developer</button>
+            <div class="panel">
+                <ul>
+                    <li>Alle allgemeinen Anforderungen</li>
+                    <li>Kenntnisse in Visual Studio Code</li>
+                    <li>Python</li>
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>Backend-Entwicklung</li>
+                </ul>
+            </div>
         </div>
     </div>
 

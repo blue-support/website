@@ -1,164 +1,186 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue Team Anforderungen</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: url('https://i.imgur.com/uIw1wR5.png') no-repeat center center fixed;
-        background-size: cover;
-        color: #fff;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Team Anforderungen</title>
+    <style>
+        /* Hintergrund */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://i.imgur.com/uIw1wR5.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* keine horizontale Scrollleiste */
+        }
 
-    ::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
-    }
+        /* Scrollbalken unsichtbar */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
 
-    /* Header */
-    .header {
-        width: 100%;
-        padding: 8px 20px;
-        background-color: rgba(0,0,0,0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-    }
+        /* Obere Leiste */
+        .header {
+            width: 100%;
+            padding: 8px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .header img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 3px solid #fff;
-    }
+        .header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
 
-    .header h1 {
-        font-size: 22px;
-        margin: 0;
-    }
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
 
-    /* Container Wrapper */
-    .container-wrapper {
-        display: flex;
-        justify-content: center; /* horizontal zentrieren */
-        align-items: flex-start; /* vertikal oben starten */
-        width: 100%;
-        margin-top: 50px;
-    }
+        /* Inhalt */
+        .container-wrapper {
+            display: flex;
+            justify-content: center; /* horizontal zentrieren */
+            width: 100%;
+            margin-top: 50px;
+        }
 
-    /* Container */
-    .container {
-        width: 85%; /* breiter */
-        max-width: 1100px;
-        padding: 25px;
-        background-color: rgba(0,0,0,0.55);
-        border-radius: 10px;
-        box-sizing: border-box;
-    }
+        .container {
+            width: 80%; /* breiter nach links und rechts */
+            max-width: 1000px;
+            padding: 25px;
+            background-color: rgba(0,0,0,0.55);
+            border-radius: 10px;
+        }
 
-    .container h2 {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 30px;
-    }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 30px;
+        }
 
-    /* Accordion */
-    .accordion {
-        background-color: rgba(255,255,255,0.1);
-        color: #fff;
-        cursor: pointer;
-        padding: 14px 18px;
-        width: 100%;
-        text-align: left;
-        border: none;
-        outline: none;
-        font-size: 18px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-    }
+        /* Aufklappbare Abschnitte */
+        .accordion {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            cursor: pointer;
+            padding: 14px 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
 
-    .accordion:hover {
-        background-color: rgba(255,255,255,0.2);
-    }
+        .accordion:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
 
-    .accordion:after {
-        content: "\2212"; /* Minuszeichen, standardmäßig aufgeklappt */
-        float: right;
-        font-size: 20px;
-    }
+        .accordion:after {
+            content: '\002B';
+            float: right;
+            font-size: 20px;
+        }
 
-    .panel {
-        padding: 0 18px;
-        background-color: rgba(255,255,255,0.05);
-        overflow: visible; /* standardmäßig geöffnet */
-        max-height: none;
-        border-radius: 0 0 5px 5px;
-    }
+        .accordion.active:after {
+            content: "\2212"; /* Minuszeichen */
+        }
 
-    .panel ul {
-        list-style-type: disc;
-        padding-left: 20px;
-        margin: 10px 0;
-    }
+        .panel {
+            padding: 0 18px;
+            background-color: rgba(255,255,255,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-radius: 0 0 5px 5px;
+        }
 
-    .panel ul li {
-        margin: 8px 0;
-    }
-</style>
+        .panel ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .panel ul li {
+            margin: 8px 0;
+        }
+    </style>
 </head>
 <body>
 
-<div class="header">
-    <img src="https://i.imgur.com/hbnRGCq.png" alt="Profilbild">
-    <h1>Blue x Coding</h1>
-</div>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://i.imgur.com/uIw1wR5.png" alt="Profilbild">
+        <h1>Blue x Coding</h1>
+    </div>
 
-<div class="container-wrapper">
-    <div class="container">
-        <h2>Team Anforderungen</h2>
+    <!-- Inhalt -->
+    <div class="container-wrapper">
+        <div class="container">
+            <h2>Team Anforderungen</h2>
 
-        <button class="accordion active">Allgemeine Anforderungen</button>
-        <div class="panel">
-            <ul>
-                <li>Mindestalter: 15 Jahre</li>
-                <li>Aktivität auf dem Server</li>
-                <li>Funktionierendes Mikrofon</li>
-                <li>Respektvoller Umgang mit allen Mitgliedern</li>
-                <li>Grundkenntnisse über Discord</li>
-                <li>Keine Verwarnungen oder schlechten Bemerkungen</li>
-            </ul>
-        </div>
+            <button class="accordion">Allgemeine Anforderungen</button>
+            <div class="panel">
+                <ul>
+                    <li>Mindestalter: 15 Jahre</li>
+                    <li>Aktivität auf dem Server</li>
+                    <li>Funktionierendes Mikrofon</li>
+                    <li>Respektvoller Umgang mit allen Mitgliedern</li>
+                    <li>Grundkenntnisse über Discord</li>
+                    <li>Keine Verwarnungen oder schlechten Bemerkungen</li>
+                </ul>
+            </div>
 
-        <button class="accordion active">Anforderungen für Bot Developer</button>
-        <div class="panel">
-            <ul>
-                <li>Alle allgemeinen Anforderungen</li>
-                <li>Kenntnisse in Visual Studio Code</li>
-                <li>Python</li>
-            </ul>
-        </div>
+            <button class="accordion">Anforderungen für Bot Developer</button>
+            <div class="panel">
+                <ul>
+                    <li>Alle allgemeinen Anforderungen</li>
+                    <li>Kenntnisse in Visual Studio Code</li>
+                    <li>Python</li>
+                </ul>
+            </div>
 
-        <button class="accordion active">Anforderungen für Web Developer</button>
-        <div class="panel">
-            <ul>
-                <li>Alle allgemeinen Anforderungen</li>
-                <li>Kenntnisse in Visual Studio Code</li>
-                <li>Python</li>
-                <li>HTML & CSS</li>
-                <li>JavaScript</li>
-                <li>Backend-Entwicklung</li>
-            </ul>
+            <button class="accordion">Anforderungen für Web Developer</button>
+            <div class="panel">
+                <ul>
+                    <li>Alle allgemeinen Anforderungen</li>
+                    <li>Kenntnisse in Visual Studio Code</li>
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>Backend-Entwicklung</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+
+    <script>
+        // Accordion Funktion
+        const accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

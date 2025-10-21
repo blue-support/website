@@ -90,7 +90,7 @@
         }
 
         .accordion:after {
-            content: '\002B';
+            content: '\2212'; /* Minuszeichen standardmäßig aufgeklappt */
             float: right;
             font-size: 20px;
         }
@@ -102,9 +102,8 @@
         .panel {
             padding: 0 18px;
             background-color: rgba(255,255,255,0.05);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+            max-height: none; /* standardmäßig aufgeklappt */
+            overflow: visible;
             border-radius: 0 0 5px 5px;
         }
 
@@ -123,7 +122,7 @@
 
     <!-- Header -->
     <div class="header">
-        <img src="https://i.imgur.com/zHJFQfy.png" alt="Profilbild">
+        <img src="https://i.imgur.com/hbnRGCq.png" alt="Profilbild">
         <h1>Blue x Coding</h1>
     </div>
 
@@ -132,7 +131,7 @@
         <div class="container">
             <h2>Team Anforderungen</h2>
 
-            <button class="accordion">Allgemeine Anforderungen</button>
+            <button class="accordion active">Allgemeine Anforderungen</button>
             <div class="panel">
                 <ul>
                     <li>Mindestalter: 15 Jahre</li>
@@ -144,7 +143,7 @@
                 </ul>
             </div>
 
-            <button class="accordion">Anforderungen für Bot Developer</button>
+            <button class="accordion active">Anforderungen für Bot Developer</button>
             <div class="panel">
                 <ul>
                     <li>Alle allgemeinen Anforderungen</li>
@@ -153,7 +152,7 @@
                 </ul>
             </div>
 
-            <button class="accordion">Anforderungen für Web Developer</button>
+            <button class="accordion active">Anforderungen für Web Developer</button>
             <div class="panel">
                 <ul>
                     <li>Alle allgemeinen Anforderungen</li>
@@ -176,8 +175,10 @@
                 const panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
+                    panel.style.overflow = "hidden";
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";
+                    panel.style.overflow = "visible";
                 }
             });
         });

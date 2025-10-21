@@ -12,43 +12,50 @@
             background: url('https://i.imgur.com/uIw1wR5.png') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Obere Leiste */
         .header {
             width: 100%;
-            padding: 15px 20px;
+            padding: 10px 20px;
             background-color: rgba(0, 0, 0, 0.6);
             display: flex;
+            justify-content: center;
             align-items: center;
+            gap: 15px;
         }
 
         .header img {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             border: 3px solid #fff;
-            margin-right: 20px;
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 24px;
             margin: 0;
         }
 
         /* Inhalt */
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 700px;
+            margin: auto;
             padding: 20px;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.55);
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .container h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 32px;
+            margin-bottom: 20px;
+            font-size: 28px;
         }
 
         /* Aufklappbare Abschnitte */
@@ -56,14 +63,14 @@
             background-color: rgba(255,255,255,0.1);
             color: #fff;
             cursor: pointer;
-            padding: 15px 20px;
+            padding: 12px 15px;
             width: 100%;
             text-align: left;
             border: none;
             outline: none;
             transition: background-color 0.3s ease;
             font-size: 18px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border-radius: 5px;
         }
 
@@ -82,7 +89,7 @@
         }
 
         .panel {
-            padding: 0 20px;
+            padding: 0 15px;
             background-color: rgba(255,255,255,0.05);
             max-height: 0;
             overflow: hidden;
@@ -93,10 +100,11 @@
         .panel ul {
             list-style-type: disc;
             padding-left: 20px;
+            margin: 10px 0;
         }
 
         .panel ul li {
-            margin: 10px 0;
+            margin: 8px 0;
         }
     </style>
 </head>
@@ -104,7 +112,7 @@
 
     <!-- Header -->
     <div class="header">
-        <img src="https://cdn.discordapp.com/attachments/1336787419139407912/1385749412512268308/Blue_Profil_Sommer.png?ex=68f8b2f5&is=68f76175&hm=98615d65d88721532d2350705b960b752df2e715492af9db082bddec882ccf1e&" alt="Profilbild">
+        <img src="https://i.imgur.com/zHJFQfy.png" alt="Profilbild">
         <h1>Blue x Coding</h1>
     </div>
 
@@ -120,6 +128,7 @@
                 <li>Funktionierendes Mikrofon</li>
                 <li>Respektvoller Umgang mit allen Mitgliedern</li>
                 <li>Grundkenntnisse über Discord</li>
+                <li>Keine Verwarnungen oder schlechten Bemerkungen</li>
             </ul>
         </div>
 
@@ -137,6 +146,7 @@
             <ul>
                 <li>Alle allgemeinen Anforderungen</li>
                 <li>Kenntnisse in Visual Studio Code</li>
+                <li>Python</li>
                 <li>HTML & CSS</li>
                 <li>JavaScript</li>
                 <li>Backend-Entwicklung</li>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Team Anforderungen</title>
+    <style>
+        /* Hintergrund */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://i.imgur.com/uIw1wR5.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Obere Leiste */
+        .header {
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+        }
+
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            margin-right: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        /* Inhalt */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        /* Aufklappbare Abschnitte */
+        .accordion {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            cursor: pointer;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .accordion:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .accordion:after {
+            content: '\002B';
+            float: right;
+            font-size: 20px;
+        }
+
+        .accordion.active:after {
+            content: "\2212"; /* Minuszeichen */
+        }
+
+        .panel {
+            padding: 0 20px;
+            background-color: rgba(255,255,255,0.05);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .panel ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .panel ul li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="https://cdn.discordapp.com/attachments/1336787419139407912/1385749412512268308/Blue_Profil_Sommer.png?ex=68f8b2f5&is=68f76175&hm=98615d65d88721532d2350705b960b752df2e715492af9db082bddec882ccf1e&" alt="Profilbild">
+        <h1>Blue x Coding</h1>
+    </div>
+
+    <!-- Inhalt -->
+    <div class="container">
+        <h2>Team Anforderungen</h2>
+
+        <button class="accordion">Allgemeine Anforderungen</button>
+        <div class="panel">
+            <ul>
+                <li>Mindestalter: 15 Jahre</li>
+                <li>Aktivität auf dem Server</li>
+                <li>Funktionierendes Mikrofon</li>
+                <li>Respektvoller Umgang mit allen Mitgliedern</li>
+                <li>Grundkenntnisse über Discord</li>
+            </ul>
+        </div>
+
+        <button class="accordion">Anforderungen für Bot Developer</button>
+        <div class="panel">
+            <ul>
+                <li>Alle allgemeinen Anforderungen</li>
+                <li>Kenntnisse in Visual Studio Code</li>
+                <li>Python</li>
+            </ul>
+        </div>
+
+        <button class="accordion">Anforderungen für Web Developer</button>
+        <div class="panel">
+            <ul>
+                <li>Alle allgemeinen Anforderungen</li>
+                <li>Kenntnisse in Visual Studio Code</li>
+                <li>HTML & CSS</li>
+                <li>JavaScript</li>
+                <li>Backend-Entwicklung</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Accordion Funktion
+        const accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

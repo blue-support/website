@@ -157,17 +157,17 @@
 </head>
 <body>
 
-  <!-- Regenanimation -->
+
   <div class="rain" id="rain"></div>
 
-  <!-- Navbar -->
+
   <div class="navbar">
     <img src="https://i.imgur.com/sF4p4Wt.png" alt="Profil" class="profile-img" />
     <div class="nav-title">Error 404 - Website nicht gefunden</div>
     <div style="width: 32px;"></div>
   </div>
 
-  <!-- Content -->
+
   <div class="content">
     <h1 class="error-title">Error 404</h1>
     <p class="error-description">Website wurde nicht gefunden. Bitte wende dich an den Blue Support!</p>
@@ -175,9 +175,9 @@
     <div class="countdown" id="countdown">20</div>
   </div>
 
-  <!-- JavaScript -->
+
   <script>
-    // Regen erzeugen
+
     const rainContainer = document.getElementById("rain");
     for (let i = 0; i < 120; i++) {
       const drop = document.createElement("div");
@@ -188,26 +188,26 @@
       rainContainer.appendChild(drop);
     }
 
-    // Countdown & Weiterleitung
+
     let countdown = 20;
     const countdownElement = document.getElementById('countdown');
 
     const interval = setInterval(() => {
       countdown--;
 
-      // Update Countdown Zahl
+
       countdownElement.textContent = countdown;
 
-      // Herzschlag-Animation ab 10 Sekunden
+
       if (countdown <= 10 && countdown > 0) {
-        countdownElement.classList.remove("heartbeat"); // reset
-        void countdownElement.offsetWidth; // force reflow for restart animation
+        countdownElement.classList.remove("heartbeat"); 
+        void countdownElement.offsetWidth; 
         countdownElement.classList.add("heartbeat");
       }
 
       if (countdown <= 0) {
         clearInterval(interval);
-        window.location.href = "index.html"; // Zielseite
+        window.location.href = "index.html"; 
       }
     }, 1000);
   </script>

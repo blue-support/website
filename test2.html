@@ -10,7 +10,7 @@
   html, body {
     margin: 0;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: #030712;
     font-family: "Poppins", sans-serif;
   }
@@ -26,7 +26,7 @@
   .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
   .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
   .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
-  @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(60px,-40px) scale(1.15); } }
+  @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.15); } }
 
   .content {
     position: relative;
@@ -37,6 +37,7 @@
     justify-content: flex-start;
     height: 100%;
     text-align: center;
+    overflow: hidden;
     transform: translateY(-60px);
   }
 
@@ -74,13 +75,12 @@
     transform: scale(1.1);
     box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
-
-  .emoji {
+  .emoji-box i {
     font-size: 70px;
-    color: #3b82f6; /* blau */
+    color: #377ad2;
     transition: transform 0.3s ease;
   }
-  .emoji-box:hover .emoji {
+  .emoji-box:hover i {
     transform: rotate(15deg);
   }
 
@@ -97,17 +97,26 @@
     flex-direction: column;
     align-items: center;
     color: white;
+    transition: all 0.3s ease;
+  }
+
+  .info-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
 
   .info-box h2 {
     font-size: 32px;
     margin: 0 0 15px 0;
-    background: linear-gradient(90deg, #60a5fa, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .info-box p {
@@ -148,7 +157,7 @@
   <div class="content">
     <!-- Emoji-Kasten oben -->
     <div class="emoji-box">
-      <div class="emoji">🚧</div> <!-- blau eingefärbt -->
+      <i class="fa-solid fa-road-barrier"></i>
     </div>
 
     <!-- Titel + Untertitel -->
@@ -157,7 +166,10 @@
 
     <!-- Info-Kasten unten -->
     <div class="info-box">
-      <h2><i class="fas fa-sparkles"></i> Bald verfügbar ✨</h2>
+      <h2>
+        <i class="fa-regular fa-sparkles" style="color: #377ad2;"></i>
+        <span class="gradient-text">Bald verfügbar ✨</span>
+      </h2>
       <p>Unsere neue Website wird gerade entwickelt und erhält den letzten Schliff. Wir arbeiten hart daran, Ihnen ein außergewöhnliches Erlebnis zu bieten.</p>
       <div class="dots">
         <div class="dot"></div>

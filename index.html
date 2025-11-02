@@ -1,406 +1,192 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Blue Support ⚡</title>
-<link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue - Bald verfügbar ⚡</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 <style>
   html, body {
     margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background-image: url('https://i.imgur.com/0ks9X2Q.png');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    height: 100%;
+    overflow-y: scroll; 
+    background-color: #030712;
+    font-family: "Poppins", sans-serif;
 
-  .fade-slide {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  .fade-slide.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-
-  /* Navbar */
-  .navbar {
-    background-color: rgba(0, 0, 50, 0.9);
-    padding: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  }
-
-  .menu-toggle {
-    font-size: 28px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    top: 65px;
-    left: 15px;
-    background-color: rgba(0,0,50,0.95);
-    padding: 15px;
-    border-radius: 8px;
-    z-index: 999;
-  }
-
-  .menu.visible {
-    display: flex;
-  }
-
-  .menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  .menu a:hover {
-    text-decoration: underline;
-  }
-
-  .profile-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    flex: 1;
-  }
-
-  .profile-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid white;
-    object-fit: cover;
-  }
-
-  /* Container */
-  .container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    max-width: 1300px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
-
-  /* Boxes */
-  .box {
-    background-color: rgba(255, 140, 0, 0.9);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    color: #fff;
-    width: 320px;
-    height: 600px;
-    overflow-y: auto;
-    flex-shrink: 0;
     scrollbar-width: none;
-    -ms-overflow-style: none;
+    -ms-overflow-style: none;  
   }
-  .box::-webkit-scrollbar {
-    display: none;
-  }
+  body::-webkit-scrollbar { display: none; }
 
-  .box h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
+  /* Hintergrund-Orbs */
+  .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; z-index: 0; }
+  .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
+  .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
+  .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
+  @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.15); } }
 
-  .update-box h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 5px;
-  }
-
-  .update-box p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-
-  .team-role {
-    margin-bottom: 20px;
-  }
-
-  .team-role-title {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
-
-  .team-member {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    font-size: 14px;
-  }
-
-  .team-member img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-  }
-
-  /* Main Content */
-  .main-content {
-    background-color: rgba(0,0,50,0.75);
-    border-radius: 12px;
-    padding: 40px;
-    max-width: 600px;
-    max-height: 600px;
-    color: white;
-    text-align: center;
-    flex-grow: 1;
-    min-width: 320px;
-    overflow-y: auto;
-    box-shadow: 0 0 20px rgba(0,0,50,0.8);
+  /* Haupt-Container mittig */
+  .content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     justify-content: center;
-    height: 600px;
+    min-height: 100vh; 
+    gap: 35px; 
+    padding: 20px; 
   }
 
-  .main-content h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+  h1 {
+    font-size: 80px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
   }
 
-  .description {
-    font-size: 18px;
-    margin-bottom: 30px;
-    line-height: 1.6;
+  p {
+    margin-top: 5px; 
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  .button-group {
+  /* Kleine Buttons */
+  .button-like {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    background-color: #007bff;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
+    gap: 8px;
+    padding: 12px 20px; 
+    border-radius: 20px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px 5px rgba(59,130,246,0.6);
+    transition: all 0.3s ease;
     cursor: pointer;
-    text-decoration: none;
-    min-width: 160px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    color: white;
+    font-size: 14px; 
   }
-  .btn:hover {
-    background-color: #0056b3;
+  .button-like:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px 10px rgba(59,130,246,0.8);
   }
+  .button-like i { font-size: 18px; }
 
-  /* Footer */
-  .footer {
-    background-color: rgba(0,0,50,0.7);
-    padding: 15px;
+  /* Oberer Kasten würfelförmig */
+  .emoji-box {
+    width: 140px;   
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px; 
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .emoji-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
+  }
+  .emoji-box i { font-size: 50px; color: #377ad2; transition: transform 0.3s ease; }
+  .emoji-box:hover i { transform: rotate(15deg); }
+
+  /* Unterer Kasten breiter */
+  .info-box {
+    width: 600px; 
+    max-width: 90%;
+    padding: 30px 25px;
+    border-radius: 20px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px 5px rgba(59,130,246,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .info-box:hover { transform: scale(1.05); box-shadow: 0 0 35px 15px rgba(59,130,246,0.8); }
+
+  .info-box h2 {
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+  }
+  .gradient-text { background: linear-gradient(90deg, #60a5fa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .info-box p { font-size: 16px; color: rgba(255,255,255,0.7); margin: 0 0 20px 0; line-height: 1.5; }
+
+  /* Ladepunkte */
+  .dots { display: flex; justify-content: center; gap: 10px; }
+  .dot { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; animation: bounce 1.2s infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
+
+  /* Fußzeile */
+  footer {
     text-align: center;
+    color: rgba(255,255,255,0.5);
     font-size: 14px;
-  }
-  .footer a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-  .footer a:hover {
-    text-decoration: underline;
-  }
-
-  /* Responsive Mobile */
-  @media (max-width: 1000px) {
-    .container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .box, .main-content {
-      width: 90vw;
-      height: auto;
-      max-height: none;
-      margin-bottom: 20px;
-    }
-    .main-content {
-      height: auto;
-    }
-  }
-
-  @media (max-width: 500px) {
-    .navbar {
-      font-size: 18px;
-      padding: 8px 10px;
-    }
-    .profile-container {
-      flex-direction: column;
-      gap: 5px;
-    }
-    .main-content h1 {
-      font-size: 22px;
-    }
-    .description {
-      font-size: 14px;
-    }
-    .btn {
-      font-size: 14px;
-      padding: 10px 15px;
-      min-width: 120px;
-    }
-    .menu {
-      top: 50px;
-      left: 5px;
-      right: 5px;
-    }
+    margin-top: 40px;
+    padding-bottom: 20px;
   }
 </style>
 </head>
 <body>
-  <div class="navbar fade-slide">
-    <div class="menu-toggle" onclick="toggleMenu()">☰ Menü</div>
-    <div class="profile-container">
-      <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
-      <span>Blue Support ⚡</span>
+  <div class="orb pink"></div>
+  <div class="orb blue"></div>
+  <div class="orb purple"></div>
+
+  <div class="content">
+    <!-- Status-Button oben -->
+    <div class="button-like">
+      <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
+      Status: In Entwicklung
     </div>
-  </div>
 
-  <div class="menu" id="menu">
-    <a href="partners.html">Partners</a>
-    <a href="blueggt.html">BlueGGT - ChatBot</a>
-    <a href="cmds.html">Bot Commands</a>
-    <a href="team.html">Team Anforderungen</a>
-    <a href="generator.html">QR Generator</a>
-    <a href="snake.html">Blue Snake (Game)</a>
-    <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
-  </div>
+    <!-- Oberer Kasten würfelförmig -->
+    <div class="emoji-box">
+      <i class="fa-solid fa-road-barrier"></i>
+    </div>
 
-  
-  <div class="box update-box fade-slide" id="updateBox">
-    <h1>Letzten Updates</h1>
-    <h2>Version: 3.0.0 UPDATE ⚡</h2>
-    <pre style="font-family: inherit; font-size: 14px; line-height: 1.6; color: #fff;">
-📢 V3 BOT UPDATE – OFFIZIELL LIVE! ⚡
+    <!-- Titel + Untertitel -->
+    <h1>In Arbeit</h1>
+    <p>Wir arbeiten an etwas Großartigem</p>
 
-✨ Neue Features im Überblick:
-🌍 NEUER Globalchat
-🎲 Fun Commands
-🤖 BlueGGT – ChatBot: https://website.blue-lol.de/blueggt
-🐍 Snake Game: https://website.blue-lol.de/snake
-🎶 Musik System (24/7)
-🎮 Mini Games
-🔥 ...und vieles mehr!
-
-🔧 Wichtig: Weitere Moderations-Commands (warn/unwarn) folgen im nächsten Mini-Update!
-
-💡 Weitere coole Features werden nach und nach hinzugefügt – bleibt gespannt!
-
-Das Blue Team ⚡ wünscht euch viel Spaß mit dem V3 Update und bedankt sich herzlich für euren Support! 💙
-    </pre>
-  </div>
-
-
-
-
-    <div class="main-content fade-slide">
-      <h1>Welcome to the Blue Website! ⚡</h1>
-      <div class="description">
-        Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du hier genau richtig! Unser Blue ⚡ Bot sorgt für Ordnung, Unterhaltung und alles, was du für deinen Server brauchst – ohne unnötigen Schnickschnack. Einfach, effizient und immer am Start. Überzeug dich selbst! 🔥
-      </div>
-      <div class="button-group">
-        <a class="btn" href="https://discord.gg/wQgNPNSYrG" target="_blank">Join Discord</a>
-        <a class="btn" href="features.html">Features</a>
+    <!-- Unterer Kasten -->
+    <div class="info-box">
+      <h2>
+        <i class="fa-regular fa-sparkles" style="color: #377ad2;"></i>
+        <span class="gradient-text">Bald verfügbar</span>
+      </h2>
+      <p>Unsere neue Website wird gerade entwickelt und erhält den letzten Schliff. Wir arbeiten hart daran, Ihnen ein außergewöhnliches Erlebnis zu bieten.</p>
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
       </div>
     </div>
 
-    <div class="box team-box fade-slide" id="teamBox">
-      <h1>Teammitglieder</h1>
-    </div>
+    <!-- Support-Button unten -->
+    <a href="https://discord.gg/wQgNPNSYrG" target="_blank" style="text-decoration: none;">
+      <div class="button-like">
+        <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
+        Support kontaktieren
+      </div>
+    </a>
   </div>
 
-  <div class="footer fade-slide">
-    <a href="privacy.html">Privacy</a> |
-    <a href="tos.html">ToS</a> |
-    <a href="impressum.html">Impressum</a>
-  </div>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('visible');
-    }
-
-    window.addEventListener('load', () => {
-      const fadeEls = document.querySelectorAll('.fade-slide');
-      fadeEls.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i*300);
-      });
-
-      const teamData = {
-        "CEO": [{username:"Kuba_e45", avatar:"https://i.imgur.com/FcASN3X.jpg"}],
-        "Moderator": [{username:"SchwiiGPT", avatar:"https://i.imgur.com/KP1CVzc.png"}],
-      };
-
-      const teamBox = document.getElementById('teamBox');
-
-      function renderTeam(data) {
-        for (const role in data) {
-          const roleDiv = document.createElement('div');
-          roleDiv.classList.add('team-role');
-
-          const roleTitle = document.createElement('div');
-          roleTitle.classList.add('team-role-title');
-          roleTitle.textContent = role + ":";
-
-          roleDiv.appendChild(roleTitle);
-
-          data[role].forEach(member => {
-            const memberDiv = document.createElement('div');
-            memberDiv.classList.add('team-member');
-
-            const img = document.createElement('img');
-            img.src = member.avatar;
-            img.alt = member.username;
-
-            const span = document.createElement('span');
-            span.textContent = member.username;
-
-            memberDiv.appendChild(img);
-            memberDiv.appendChild(span);
-            roleDiv.appendChild(memberDiv);
-          });
-
-          teamBox.appendChild(roleDiv);
-        }
-      }
-
-      renderTeam(teamData);
-    });
-  </script>
+  <!-- Fußzeile -->
+  <footer>
+    © 2025 Alle Rechte vorbehalten
+  </footer>
 </body>
 </html>

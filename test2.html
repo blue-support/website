@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>In Arbeit</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dfQXfDFy..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   html, body {
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #030712;
     font-family: "Poppins", sans-serif;
   }
@@ -26,14 +28,13 @@
   .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
   @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(60px,-40px) scale(1.15); } }
 
-  /* Textbereich */
   .content {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
     text-align: center;
     transform: translateY(-60px);
@@ -54,7 +55,7 @@
     color: rgba(255, 255, 255, 0.6);
   }
 
-  /* Emoji-Kasten */
+  /* Emoji-Kasten oben */
   .emoji-box {
     display: flex;
     align-items: center;
@@ -64,27 +65,77 @@
     background: rgba(200,200,200,0.05);
     border: 2px solid rgba(255,255,255,0.2);
     border-radius: 25px;
-    box-shadow: 0 0 20px 8px rgba(59,130,246,0.6); /* immer blauer Glow */
+    box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
     transition: all 0.3s ease;
     position: relative;
     margin-bottom: 30px;
   }
-
-  /* Hover Kasten */
   .emoji-box:hover {
     transform: scale(1.1);
     box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
 
-  /* Emoji selbst gemacht */
   .emoji {
     font-size: 70px;
-    color: #3b82f6;
+    color: #3b82f6; /* blau */
     transition: transform 0.3s ease;
   }
-
   .emoji-box:hover .emoji {
-    transform: rotate(15deg); /* dreht sich nach rechts */
+    transform: rotate(15deg);
+  }
+
+  /* Info-Kasten unten */
+  .info-box {
+    width: 500px;
+    max-width: 90%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-top: 40px;
+    box-shadow: 0 0 20px 5px rgba(59,130,246,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+
+  .info-box h2 {
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .info-box p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+  }
+
+  /* Ladepunkte */
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: #60a5fa;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
   }
 </style>
 </head>
@@ -95,14 +146,25 @@
   <div class="orb purple"></div>
 
   <div class="content">
-    <!-- Emoji-Kasten -->
+    <!-- Emoji-Kasten oben -->
     <div class="emoji-box">
-      <div class="emoji">🚧</div>
+      <div class="emoji">🚧</div> <!-- blau eingefärbt -->
     </div>
 
     <!-- Titel + Untertitel -->
     <h1>In Arbeit</h1>
     <p>Wir arbeiten an etwas Großartigem</p>
+
+    <!-- Info-Kasten unten -->
+    <div class="info-box">
+      <h2><i class="fas fa-sparkles"></i> Bald verfügbar ✨</h2>
+      <p>Unsere neue Website wird gerade entwickelt und erhält den letzten Schliff. Wir arbeiten hart daran, Ihnen ein außergewöhnliches Erlebnis zu bieten.</p>
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

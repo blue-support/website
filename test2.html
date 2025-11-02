@@ -10,9 +10,16 @@
   html, body {
     margin: 0;
     height: 100%;
-    overflow-y: auto; /* Scrollen erlauben */
+    overflow-y: scroll; /* Scrollen erlaubt */
     background-color: #030712;
     font-family: "Poppins", sans-serif;
+
+    /* Scrollbar ausblenden */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+  }
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   /* Hintergrund-Orbs */
@@ -36,8 +43,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 40px; /* weniger Abstand zwischen den Elementen */
-    padding: 80px 20px; /* oben und unten */
+    gap: 60px; /* Abstand zwischen den Boxen */
+    padding: 80px 20px; /* Abstand oben und unten */
   }
 
   h1 {
@@ -50,7 +57,7 @@
   }
 
   p {
-    margin-top: 10px; /* kleiner Abstand unter dem Titel */
+    margin-top: 5px; /* Sehr wenig Abstand unter dem Titel */
     font-size: 20px;
     color: rgba(255, 255, 255, 0.6);
   }

@@ -10,16 +10,16 @@
   html, body {
     margin: 0;
     height: 100%;
-    overflow-y: scroll; /* Scrollen erlaubt */
+    overflow-y: scroll; 
     background-color: #030712;
     font-family: "Poppins", sans-serif;
 
     /* Scrollbar ausblenden */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;  
   }
   body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
 
   /* Hintergrund-Orbs */
@@ -43,8 +43,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 40px;
-    padding: 80px 20px;
+    gap: 20px; /* Abstand verringert */
+    padding: 40px 20px; /* weniger Abstand oben/unten */
   }
 
   h1 {
@@ -57,33 +57,9 @@
   }
 
   p {
-    margin-top: 5px;
+    margin-top: 5px; 
     font-size: 20px;
     color: rgba(255, 255, 255, 0.6);
-  }
-
-  /* Box-Stil für Kasten & Buttons */
-  .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 30px 20px;
-    border-radius: 25px;
-    background: rgba(200,200,200,0.05);
-    border: 2px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-  }
-  .box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
-  }
-  .box i {
-    font-size: 24px;
   }
 
   /* Kleine Button-Elemente */
@@ -92,7 +68,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 20px; /* kleiner */
+    padding: 12px 20px; 
     border-radius: 20px;
     background: rgba(200,200,200,0.05);
     border: 2px solid rgba(255,255,255,0.2);
@@ -100,33 +76,51 @@
     transition: all 0.3s ease;
     cursor: pointer;
     color: white;
-    font-size: 14px; /* kleiner */
+    font-size: 14px; 
   }
   .button-like:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px 10px rgba(59,130,246,0.8);
   }
-  .button-like i {
-    font-size: 18px; /* kleiner Icon */
-  }
+  .button-like i { font-size: 18px; }
 
-  /* Oberer Emoji-Kasten */
+  /* Oberer Emoji-Kasten viereckig */
   .emoji-box {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 100px; /* nicht so hoch */
+    display: flex;
+    align-items: center;
     justify-content: center;
+    border-radius: 20px; /* leicht abgerundet */
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
-  .emoji-box:hover i {
-    transform: rotate(15deg);
+  .emoji-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
+  .emoji-box i { font-size: 50px; color: #377ad2; transition: transform 0.3s ease; }
+  .emoji-box:hover i { transform: rotate(15deg); }
 
-  /* Info-Kasten unten */
+  /* Unterer Kasten breiter */
   .info-box {
-    width: 500px;
+    width: 600px; /* breiter */
     max-width: 90%;
-    padding: 30px 20px;
+    padding: 30px 25px;
+    border-radius: 20px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px 5px rgba(59,130,246,0.4);
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    color: white;
+    transition: all 0.3s ease;
   }
+  .info-box:hover { transform: scale(1.05); box-shadow: 0 0 35px 15px rgba(59,130,246,0.8); }
 
   .info-box h2 {
     font-size: 32px;
@@ -134,38 +128,15 @@
     display: flex;
     align-items: center;
   }
-  .gradient-text {
-    background: linear-gradient(90deg, #60a5fa, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .info-box p {
-    font-size: 16px;
-    color: rgba(255,255,255,0.7);
-    margin: 0 0 20px 0;
-    line-height: 1.5;
-  }
+  .gradient-text { background: linear-gradient(90deg, #60a5fa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .info-box p { font-size: 16px; color: rgba(255,255,255,0.7); margin: 0 0 20px 0; line-height: 1.5; }
 
   /* Ladepunkte */
-  .dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  .dot {
-    width: 12px;
-    height: 12px;
-    background: #60a5fa;
-    border-radius: 50%;
-    animation: bounce 1.2s infinite;
-  }
+  .dots { display: flex; justify-content: center; gap: 10px; }
+  .dot { width: 12px; height: 12px; background: #60a5fa; border-radius: 50%; animation: bounce 1.2s infinite; }
   .dot:nth-child(2) { animation-delay: 0.2s; }
   .dot:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes bounce {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-    40% { transform: scale(1); opacity: 1; }
-  }
+  @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
 </style>
 </head>
 <body>
@@ -175,23 +146,23 @@
   <div class="orb purple"></div>
 
   <div class="content">
-    <!-- Status-Button oben (klein) -->
+    <!-- Status-Button oben -->
     <div class="button-like">
       <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
       Status: In Entwicklung
     </div>
 
-    <!-- Oberer Kasten -->
-    <div class="emoji-box box">
-      <i class="fa-solid fa-road-barrier" style="color: #377ad2;"></i>
+    <!-- Oberer Kasten viereckig -->
+    <div class="emoji-box">
+      <i class="fa-solid fa-road-barrier"></i>
     </div>
 
     <!-- Titel + Untertitel -->
     <h1>In Arbeit</h1>
     <p>Wir arbeiten an etwas Großartigem</p>
 
-    <!-- Unterer Kasten -->
-    <div class="info-box box">
+    <!-- Unterer Kasten breiter -->
+    <div class="info-box">
       <h2>
         <i class="fa-regular fa-sparkles" style="color: #377ad2;"></i>
         <span class="gradient-text">Bald verfügbar</span>
@@ -204,7 +175,7 @@
       </div>
     </div>
 
-    <!-- Support-Button unten (klein) -->
+    <!-- Support-Button unten -->
     <a href="https://discord.gg/wQgNPNSYrG" target="_blank" style="text-decoration: none;">
       <div class="button-like">
         <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>

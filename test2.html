@@ -9,52 +9,24 @@
       margin: 0;
       height: 100%;
       overflow: hidden;
-      background-color: #030712; /* Dunkelblauer Hintergrund */
+      background-color: #030712;
       font-family: "Poppins", sans-serif;
     }
 
-    /* Orbs als Hintergrund-Layer */
+    /* Orbs */
     .orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(120px);
       opacity: 0.4;
-      z-index: 0; /* unbedingt hinter Text */
+      z-index: 0;
     }
+    .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
+    .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
+    .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
+    @keyframes float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(60px,-40px) scale(1.15); } }
 
-    .orb.pink {
-      background: #ec4899;
-      width: 500px;
-      height: 500px;
-      top: 10%;
-      left: 60%;
-      animation: float 18s infinite alternate ease-in-out;
-    }
-
-    .orb.blue {
-      background: #3b82f6;
-      width: 600px;
-      height: 600px;
-      top: 50%;
-      left: 10%;
-      animation: float 22s infinite alternate ease-in-out;
-    }
-
-    .orb.purple {
-      background: #8b5cf6;
-      width: 400px;
-      height: 400px;
-      top: 30%;
-      left: 40%;
-      animation: float 25s infinite alternate ease-in-out;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(60px, -40px) scale(1.15); }
-    }
-
-    /* Text-Layer */
+    /* Textbereich */
     .content {
       position: relative;
       z-index: 1;
@@ -64,31 +36,58 @@
       justify-content: center;
       height: 100%;
       text-align: center;
-      transform: translateY(-60px); /* leicht nach oben */
+      transform: translateY(-60px);
     }
 
     h1 {
-      font-size: 64px;
+      font-size: 80px; /* Schrift größer */
       font-weight: 700;
       background: linear-gradient(90deg, #60a5fa, #ec4899);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 0;
+      margin: 20px 0 0 0;
     }
 
     p {
       margin-top: 10px;
-      font-size: 18px;
+      font-size: 20px;
       color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* 🚧 Kasten */
+    .emoji-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      background: rgba(200,200,200,0.1); /* leicht transparent */
+      border: 1px solid rgba(255,255,255,0.3); /* dünne Umrandung */
+      border-radius: 20px;
+      color: #3b82f6; /* blau */
+      font-size: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* Hover-Effekt */
+    .emoji-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px 10px rgba(59,130,246,0.5); /* leuchtender blauer Glow */
     }
   </style>
 </head>
 <body>
+  <!-- Hintergrund Orbs -->
   <div class="orb pink"></div>
   <div class="orb blue"></div>
   <div class="orb purple"></div>
 
   <div class="content">
+    <!-- Emoji Kasten -->
+    <div class="emoji-box">🚧</div>
+    <!-- Titel + Untertitel -->
     <h1>In Arbeit</h1>
     <p>Wir arbeiten an etwas Großartigem</p>
   </div>

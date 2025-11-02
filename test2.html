@@ -9,22 +9,17 @@
       margin: 0;
       height: 100%;
       overflow: hidden;
-      background-color: #030712;
-      position: relative;
+      background-color: #030712; /* Dunkelblauer Hintergrund */
       font-family: "Poppins", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
     }
 
-    /* Glow Orbs */
+    /* Orbs als Hintergrund-Layer */
     .orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(120px);
       opacity: 0.4;
-      mix-blend-mode: screen;
+      z-index: 0; /* unbedingt hinter Text */
     }
 
     .orb.pink {
@@ -59,12 +54,17 @@
       100% { transform: translate(60px, -40px) scale(1.15); }
     }
 
-    /* Textbereich */
+    /* Text-Layer */
     .content {
       position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
       text-align: center;
       transform: translateY(-60px); /* leicht nach oben */
-      z-index: 1;
     }
 
     h1 {

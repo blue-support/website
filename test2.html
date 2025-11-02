@@ -34,8 +34,8 @@
     align-items: center;
     text-align: center;
     justify-content: center;
-    min-height: 100vh; /* vertikal zentriert */
-    gap: 35px; /* etwas mehr Abstand zwischen Elementen */
+    min-height: 100vh; 
+    gap: 35px; 
     padding: 20px; 
   }
 
@@ -78,7 +78,7 @@
 
   /* Oberer Kasten würfelförmig */
   .emoji-box {
-    width: 140px;   /* Breite = Höhe → Würfel */
+    width: 140px;   
     height: 140px;
     display: flex;
     align-items: center;
@@ -129,6 +129,15 @@
   .dot:nth-child(2) { animation-delay: 0.2s; }
   .dot:nth-child(3) { animation-delay: 0.4s; }
   @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
+
+  /* Fußzeile */
+  footer {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
 </style>
 </head>
 <body>
@@ -174,5 +183,10 @@
       </div>
     </a>
   </div>
+
+  <!-- Fußzeile -->
+  <footer>
+    © 2025 Alle Rechte vorbehalten
+  </footer>
 </body>
 </html>

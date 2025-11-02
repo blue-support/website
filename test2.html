@@ -10,7 +10,7 @@
   html, body {
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden; /* Scroll verhindern */
     background-color: #030712;
     font-family: "Poppins", sans-serif;
   }
@@ -28,17 +28,18 @@
   .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
   @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.15); } }
 
+  /* Haupt-Container */
   .content {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Zentriert vertikal */
     height: 100%;
     text-align: center;
     overflow: hidden;
-    transform: translateY(-60px);
+    gap: 20px; /* Abstand zwischen Elementen */
   }
 
   h1 {
@@ -47,16 +48,16 @@
     background: linear-gradient(90deg, #60a5fa, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 20px 0 0 0;
+    margin: 0;
   }
 
   p {
-    margin-top: 10px;
+    margin: 0;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.6);
   }
 
-  /* Emoji-Kasten oben */
+  /* Oberer Emoji-Kasten */
   .emoji-box {
     display: flex;
     align-items: center;
@@ -68,8 +69,6 @@
     border-radius: 25px;
     box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
     transition: all 0.3s ease;
-    position: relative;
-    margin-bottom: 30px;
   }
   .emoji-box:hover {
     transform: scale(1.1);
@@ -91,7 +90,6 @@
     background: rgba(255,255,255,0.05);
     border-radius: 20px;
     padding: 30px 20px;
-    margin-top: 40px;
     box-shadow: 0 0 20px 5px rgba(59,130,246,0.4);
     display: flex;
     flex-direction: column;
@@ -99,7 +97,6 @@
     color: white;
     transition: all 0.3s ease;
   }
-
   .info-box:hover {
     transform: scale(1.05);
     box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
@@ -112,13 +109,11 @@
     align-items: center;
     gap: 10px;
   }
-
   .gradient-text {
     background: linear-gradient(90deg, #60a5fa, #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
   .info-box p {
     font-size: 16px;
     color: rgba(255,255,255,0.7);
@@ -155,20 +150,20 @@
   <div class="orb purple"></div>
 
   <div class="content">
-    <!-- Emoji-Kasten oben -->
+    <!-- Oberer Kasten -->
     <div class="emoji-box">
-      <i class="fa-solid fa-road-barrier"></i>
+      <i class="fa-solid fa-road-barrier" style="color: #377ad2;"></i>
     </div>
 
     <!-- Titel + Untertitel -->
     <h1>In Arbeit</h1>
     <p>Wir arbeiten an etwas Großartigem</p>
 
-    <!-- Info-Kasten unten -->
+    <!-- Unterer Kasten -->
     <div class="info-box">
       <h2>
         <i class="fa-regular fa-sparkles" style="color: #377ad2;"></i>
-        <span class="gradient-text">Bald verfügbar ✨</span>
+        <span class="gradient-text">Bald verfügbar</span>
       </h2>
       <p>Unsere neue Website wird gerade entwickelt und erhält den letzten Schliff. Wir arbeiten hart daran, Ihnen ein außergewöhnliches Erlebnis zu bieten.</p>
       <div class="dots">

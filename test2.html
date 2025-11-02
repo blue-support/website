@@ -43,8 +43,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 60px; /* Abstand zwischen den Boxen */
-    padding: 80px 20px; /* Abstand oben und unten */
+    gap: 40px;
+    padding: 80px 20px;
   }
 
   h1 {
@@ -57,32 +57,40 @@
   }
 
   p {
-    margin-top: 5px; /* Sehr wenig Abstand unter dem Titel */
+    margin-top: 5px; /* Sehr nah am Titel */
     font-size: 20px;
     color: rgba(255, 255, 255, 0.6);
   }
 
-  /* Oberer Emoji-Kasten */
-  .emoji-box {
+  /* Box-Stil für Kasten & Buttons */
+  .box, .button-like {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 160px;
-    height: 160px;
+    gap: 10px;
+    padding: 20px 30px;
+    border-radius: 25px;
     background: rgba(200,200,200,0.05);
     border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 25px;
     box-shadow: 0 0 20px 8px rgba(59,130,246,0.6);
     transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
   }
-  .emoji-box:hover {
-    transform: scale(1.1);
+  .box:hover, .button-like:hover {
+    transform: scale(1.05);
     box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
-  .emoji-box i {
-    font-size: 70px;
-    color: #377ad2;
-    transition: transform 0.3s ease;
+  .box i, .button-like i {
+    font-size: 24px;
+  }
+
+  /* Oberer Emoji-Kasten */
+  .emoji-box {
+    width: 160px;
+    height: 160px;
+    justify-content: center;
   }
   .emoji-box:hover i {
     transform: rotate(15deg);
@@ -92,19 +100,8 @@
   .info-box {
     width: 500px;
     max-width: 90%;
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
     padding: 30px 20px;
-    box-shadow: 0 0 20px 5px rgba(59,130,246,0.4);
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    color: white;
-    transition: all 0.3s ease;
-  }
-  .info-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
 
   .info-box h2 {
@@ -112,7 +109,6 @@
     margin: 0 0 15px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
   }
   .gradient-text {
     background: linear-gradient(90deg, #60a5fa, #8b5cf6);
@@ -155,8 +151,14 @@
   <div class="orb purple"></div>
 
   <div class="content">
+    <!-- Status-Button oben -->
+    <div class="button-like">
+      <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
+      Status: In Entwicklung
+    </div>
+
     <!-- Oberer Kasten -->
-    <div class="emoji-box">
+    <div class="emoji-box box">
       <i class="fa-solid fa-road-barrier" style="color: #377ad2;"></i>
     </div>
 
@@ -165,7 +167,7 @@
     <p>Wir arbeiten an etwas Großartigem</p>
 
     <!-- Unterer Kasten -->
-    <div class="info-box">
+    <div class="info-box box">
       <h2>
         <i class="fa-regular fa-sparkles" style="color: #377ad2;"></i>
         <span class="gradient-text">Bald verfügbar</span>
@@ -177,6 +179,14 @@
         <div class="dot"></div>
       </div>
     </div>
+
+    <!-- Support-Button unten -->
+    <a href="https://discord.gg/wQgNPNSYrG" target="_blank" style="text-decoration: none;">
+      <div class="button-like">
+        <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
+        Support kontaktieren
+      </div>
+    </a>
   </div>
 </body>
 </html>

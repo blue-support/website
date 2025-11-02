@@ -57,18 +57,18 @@
   }
 
   p {
-    margin-top: 5px; /* Sehr nah am Titel */
+    margin-top: 5px;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.6);
   }
 
   /* Box-Stil für Kasten & Buttons */
-  .box, .button-like {
+  .box {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 20px 30px;
+    padding: 30px 20px;
     border-radius: 25px;
     background: rgba(200,200,200,0.05);
     border: 2px solid rgba(255,255,255,0.2);
@@ -78,12 +78,36 @@
     color: white;
     font-size: 18px;
   }
-  .box:hover, .button-like:hover {
+  .box:hover {
     transform: scale(1.05);
     box-shadow: 0 0 35px 15px rgba(59,130,246,0.8);
   }
-  .box i, .button-like i {
+  .box i {
     font-size: 24px;
+  }
+
+  /* Kleine Button-Elemente */
+  .button-like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px; /* kleiner */
+    border-radius: 20px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px 5px rgba(59,130,246,0.6);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    font-size: 14px; /* kleiner */
+  }
+  .button-like:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px 10px rgba(59,130,246,0.8);
+  }
+  .button-like i {
+    font-size: 18px; /* kleiner Icon */
   }
 
   /* Oberer Emoji-Kasten */
@@ -151,7 +175,7 @@
   <div class="orb purple"></div>
 
   <div class="content">
-    <!-- Status-Button oben -->
+    <!-- Status-Button oben (klein) -->
     <div class="button-like">
       <i class="fa-regular fa-clock" style="color: #ffffff;"></i>
       Status: In Entwicklung
@@ -180,7 +204,7 @@
       </div>
     </div>
 
-    <!-- Support-Button unten -->
+    <!-- Support-Button unten (klein) -->
     <a href="https://discord.gg/wQgNPNSYrG" target="_blank" style="text-decoration: none;">
       <div class="button-like">
         <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>

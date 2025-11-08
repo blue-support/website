@@ -3,69 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blue Bot - Willkommen</title>
+    <title>Blue ⚡ Bot – Willkommen</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
     />
     <style>
-      /* === Hintergrund === */
+      html,
       body {
         margin: 0;
-        height: 100vh;
+        height: 100%;
         overflow-y: scroll;
-        overflow-x: hidden;
-        background-color: #0b0b0f;
-        color: white;
+        background-color: #030712;
         font-family: "Poppins", sans-serif;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
 
-      ::-webkit-scrollbar {
+      body::-webkit-scrollbar {
         display: none;
       }
 
-      .background {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-
+      /* Hintergrund-Orbs fixiert */
       .orb {
         position: fixed;
         border-radius: 50%;
         filter: blur(120px);
-        opacity: 0.6;
+        opacity: 0.4;
+        z-index: 0;
       }
 
-      .orb1 {
-        width: 400px;
-        height: 400px;
+      .orb.pink {
         background: #ec4899;
-        top: 10%;
-        left: 10%;
-      }
-
-      .orb2 {
         width: 500px;
         height: 500px;
+        top: 10%;
+        left: 60%;
+        animation: float 18s infinite alternate ease-in-out;
+      }
+
+      .orb.blue {
         background: #3b82f6;
-        bottom: 10%;
-        right: 15%;
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 10%;
+        animation: float 22s infinite alternate ease-in-out;
       }
 
-      .orb3 {
-        width: 300px;
-        height: 300px;
-        background: #9333ea;
-        top: 40%;
-        right: 30%;
+      .orb.purple {
+        background: #8b5cf6;
+        width: 400px;
+        height: 400px;
+        top: 30%;
+        left: 40%;
+        animation: float 25s infinite alternate ease-in-out;
       }
 
-      /* === Inhalt === */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(60px, -40px) scale(1.15);
+        }
+      }
+
       .content {
         position: relative;
         z-index: 1;
@@ -76,46 +81,47 @@
         justify-content: flex-start;
         min-height: 100vh;
         gap: 40px;
-        padding: 140px 20px 100px 20px;
+        padding: 140px 20px 100px 20px; /* <-- mehr Abstand oben */
       }
 
       h1 {
-        font-size: 64px;
+        font-size: 80px;
+        font-weight: 700;
         background: linear-gradient(90deg, #60a5fa, #ec4899);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 10px;
+        margin: 0;
       }
 
-      p.description {
+      p {
         font-size: 18px;
-        max-width: 800px;
-        color: #ccc;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 850px;
         line-height: 1.6;
-        margin-bottom: 40px;
       }
 
-      /* === Boxen (Updates & Team) === */
+      /* Boxen */
       .boxes {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        gap: 30px;
-        width: 90%;
-        max-width: 1200px;
+        align-items: flex-start;
+        gap: 40px;
+        flex-wrap: wrap;
       }
 
       .box {
-        background: rgba(30, 30, 30, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 300px;
+        height: 400px;
+        background: rgba(200, 200, 200, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
+        box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.4);
+        color: white;
         padding: 20px;
-        width: 400px;
-        height: 350px;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow-y: auto;
         scrollbar-width: none;
+        -ms-overflow-style: none;
+        transition: all 0.3s ease;
       }
 
       .box::-webkit-scrollbar {
@@ -124,111 +130,135 @@
 
       .box:hover {
         transform: scale(1.03);
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
       }
 
       .box h2 {
+        margin-top: 0;
         font-size: 24px;
-        margin-bottom: 15px;
         background: linear-gradient(90deg, #60a5fa, #ec4899);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .update-item {
-        margin-bottom: 15px;
+      /* Updates */
+      .update {
         text-align: left;
+        margin-bottom: 15px;
       }
 
-      .update-item span {
+      .update strong {
         display: block;
-        font-size: 14px;
-        color: #aaa;
+        font-size: 16px;
+        color: #60a5fa;
       }
 
-      .team-member {
+      .update small {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Teammitglieder */
+      .member {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-bottom: 15px;
       }
 
-      .team-member img {
-        width: 50px;
-        height: 50px;
+      .member img {
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #60a5fa;
       }
 
-      /* === Weitere Seiten Box === */
+      .member span {
+        font-size: 16px;
+        color: white;
+      }
+
+      /* Weitere Seiten */
       .extra-box {
-        width: 90%;
-        max-width: 900px;
-        background: rgba(30, 30, 30, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 700px;
+        background: rgba(200, 200, 200, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
-        padding: 20px;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.4);
+        color: white;
+        padding: 25px;
+        transition: all 0.3s ease;
       }
 
       .extra-box:hover {
-        transform: scale(1.03);
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+        transform: scale(1.02);
+        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
       }
 
       .extra-box h2 {
         font-size: 24px;
-        position: relative;
-        top: -8px; /* Titel leicht nach oben */
         margin-bottom: 20px;
         background: linear-gradient(90deg, #60a5fa, #ec4899);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .extra-buttons {
+     .extra-box h2 {
+       font-size: 24px;
+       position: relative;
+       top: -8px; /* <-- Titel leicht nach oben */
+       margin-bottom: 20px;
+       background: linear-gradient(90deg, #60a5fa, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+     }
+
+
+      .button-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
         gap: 10px;
       }
 
-      .extra-buttons button {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.5);
-        border-radius: 12px;
-        padding: 10px 16px;
+      .mini-btn {
+        width: 120px;
+        height: 40px;
+        border-radius: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
         color: white;
         font-size: 14px;
         cursor: pointer;
         transition: all 0.3s ease;
       }
 
-      .extra-buttons button:hover {
+      .mini-btn:hover {
+        background: rgba(59, 130, 246, 0.3);
+        box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.6);
         transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
-        background: rgba(59, 130, 246, 0.2);
       }
 
-      /* === Footer === */
       footer {
-        margin-top: 80px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
         font-size: 14px;
-        color: #777;
+        margin-top: 60px;
+        padding-bottom: 20px;
       }
     </style>
   </head>
 
   <body>
-    <div class="background">
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <div class="orb orb3"></div>
-    </div>
+    <!-- Hintergrund -->
+    <div class="orb pink"></div>
+    <div class="orb blue"></div>
+    <div class="orb purple"></div>
 
     <div class="content">
       <h1>Willkommen</h1>
-      <p class="description">
+      <p>
         Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du
         hier genau richtig! Unser Blue
         <i class="fa-solid fa-bolt" style="color: #FFD43B"></i> Bot sorgt für
@@ -239,43 +269,72 @@
       </p>
 
       <div class="boxes">
+        <!-- Box Links -->
         <div class="box">
           <h2>Letzte Updates</h2>
-          <div class="update-item">
-            <strong>Update: 0.0.2</strong>
-            <span>Datum: 02.11.2025</span>
+          <div class="update">
+            <strong>Update 0.0.2</strong>
+            <small>02.11.2025</small>
           </div>
-          <div class="update-item">
-            <strong>Update: 0.0.1</strong>
-            <span>Datum: 01.11.2025</span>
+          <div class="update">
+            <strong>Update 0.0.1</strong>
+            <small>01.11.2025</small>
+          </div>
+          <div class="update">
+            <strong>Beta Launch</strong>
+            <small>31.10.2025</small>
           </div>
         </div>
 
+        <!-- Box Rechts -->
         <div class="box">
           <h2>Teammitglieder</h2>
-          <div class="team-member">
-            <img src="https://i.imgur.com/4ZQZ4T4.png" alt="User" />
-            <span>@Blue</span>
+          <div class="member">
+            <img
+              src="https://cdn.discordapp.com/embed/avatars/0.png"
+              alt="User"
+            />
+            <span>@BlueDev</span>
           </div>
-          <div class="team-member">
-            <img src="https://i.imgur.com/4ZQZ4T4.png" alt="User" />
-            <span>@Support</span>
+          <div class="member">
+            <img
+              src="https://cdn.discordapp.com/embed/avatars/1.png"
+              alt="User"
+            />
+            <span>@Luna</span>
+          </div>
+          <div class="member">
+            <img
+              src="https://cdn.discordapp.com/embed/avatars/2.png"
+              alt="User"
+            />
+            <span>@Nova</span>
           </div>
         </div>
       </div>
 
+      <!-- Neue Box -->
       <div class="extra-box">
         <h2>Weitere Seiten</h2>
-        <div class="extra-buttons">
-          <button onclick="window.location.href='partner.html'">Partner</button>
-          <button onclick="window.location.href='game.html'">Game</button>
-          <button onclick="window.location.href='#'">Soon</button>
-          <button onclick="window.location.href='#'">Soon</button>
-          <button onclick="window.location.href='#'">Soon</button>
+        <div class="button-grid">
+          <button class="mini-btn" onclick="location.href='partner.html'">
+            Partner
+          </button>
+          <button class="mini-btn" onclick="location.href='game.html'">
+            Game
+          </button>
+          <button class="mini-btn">Shop</button>
+          <button class="mini-btn">FAQ</button>
+          <button class="mini-btn">Support</button>
+          <button class="mini-btn">Events</button>
+          <button class="mini-btn">Status</button>
+          <button class="mini-btn">Docs</button>
+          <button class="mini-btn">News</button>
+          <button class="mini-btn">Impressum</button>
         </div>
       </div>
-
-      <footer>© 2025 Alle Rechte vorbehalten.</footer>
     </div>
+
+    <footer>© 2025 Blue ⚡ Bot — Alle Rechte vorbehalten</footer>
   </body>
 </html>

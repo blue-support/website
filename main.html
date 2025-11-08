@@ -131,6 +131,56 @@
     color: white;
   }
 
+  /* Weitere Seiten */
+  .extra-box {
+    width: 700px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 6px rgba(59,130,246,0.4);
+    color: white;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .extra-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px 12px rgba(59,130,246,0.8);
+  }
+
+  .extra-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #60a5fa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+
+  .mini-btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 30px;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .mini-btn:hover {
+    background: rgba(59,130,246,0.3);
+    box-shadow: 0 0 20px 5px rgba(59,130,246,0.6);
+    transform: scale(1.05);
+  }
+
   footer {
     text-align: center;
     color: rgba(255,255,255,0.5);
@@ -170,10 +220,6 @@
           <strong>Beta Launch</strong>
           <small>31.10.2025</small>
         </div>
-        <div class="update">
-          <strong>Backend optimiert</strong>
-          <small>29.10.2025</small>
-        </div>
       </div>
 
       <!-- Box Rechts -->
@@ -191,18 +237,27 @@
           <img src="https://cdn.discordapp.com/embed/avatars/2.png" alt="User">
           <span>@Nova</span>
         </div>
-        <div class="member">
-          <img src="https://cdn.discordapp.com/embed/avatars/3.png" alt="User">
-          <span>@Zero</span>
-        </div>
-        <div class="member">
-          <img src="https://cdn.discordapp.com/embed/avatars/4.png" alt="User">
-          <span>@Sky</span>
-        </div>
+      </div>
+    </div>
+
+    <!-- Neue Box -->
+    <div class="extra-box">
+      <h2>Weitere Seiten</h2>
+      <div class="button-grid">
+        <button class="mini-btn" onclick="location.href='partner.html'">Partner</button>
+        <button class="mini-btn" onclick="location.href='game.html'">Game</button>
+        <button class="mini-btn">Shop</button>
+        <button class="mini-btn">FAQ</button>
+        <button class="mini-btn">Support</button>
+        <button class="mini-btn">Events</button>
+        <button class="mini-btn">Status</button>
+        <button class="mini-btn">Docs</button>
+        <button class="mini-btn">News</button>
+        <button class="mini-btn">Impressum</button>
       </div>
     </div>
   </div>
 
-  <footer>© 2025 Blue ⚡ Bot — Alle Rechte vorbehalten</footer>
+  <footer>© 2025 Alle Rechte vorbehalten</footer>
 </body>
 </html>

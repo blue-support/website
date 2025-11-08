@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue ⚡ Bot – Willkommen</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #030712;
+    font-family: "Poppins", sans-serif;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar { display: none; }
+
+  /* Hintergrund-Orbs fixiert */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
+  .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
+  .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
+  @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.15); } }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 40px;
+    padding: 40px 20px 100px 20px;
+  }
+
+  h1 {
+    font-size: 80px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 850px;
+    line-height: 1.6;
+  }
+
+  /* Boxen */
+  .boxes {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .box {
+    width: 300px;
+    height: 400px;
+    background: rgba(200,200,200,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 6px rgba(59,130,246,0.4);
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transition: all 0.3s ease;
+  }
+  .box::-webkit-scrollbar { display: none; }
+
+  .box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px 12px rgba(59,130,246,0.8);
+  }
+
+  .box h2 {
+    margin-top: 0;
+    font-size: 24px;
+    background: linear-gradient(90deg, #60a5fa, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Updates */
+  .update {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  .update strong {
+    display: block;
+    font-size: 16px;
+    color: #60a5fa;
+  }
+  .update small {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Teammitglieder */
+  .member {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .member img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #60a5fa;
+  }
+  .member span {
+    font-size: 16px;
+    color: white;
+  }
+
+  footer {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    margin-top: 60px;
+    padding-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <!-- Hintergrund -->
+  <div class="orb pink"></div>
+  <div class="orb blue"></div>
+  <div class="orb purple"></div>
+
+  <div class="content">
+    <h1>Willkommen</h1>
+    <p>
+      Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du hier genau richtig!  
+      Unser Blue <i class="fa-solid fa-bolt" style="color: #FFD43B;"></i> Bot sorgt für Ordnung, Unterhaltung und alles, was du für deinen Server brauchst – ohne unnötigen Schnickschnack.  
+      Einfach, effizient und immer am Start. Überzeug dich selbst! <i class="fa-solid fa-fire" style="color: #f0a505;"></i>
+    </p>
+
+    <div class="boxes">
+      <!-- Box Links -->
+      <div class="box">
+        <h2>Letzte Updates</h2>
+        <div class="update">
+          <strong>Update 0.0.2</strong>
+          <small>02.11.2025</small>
+        </div>
+        <div class="update">
+          <strong>Update 0.0.1</strong>
+          <small>01.11.2025</small>
+        </div>
+        <div class="update">
+          <strong>Beta Launch</strong>
+          <small>31.10.2025</small>
+        </div>
+        <div class="update">
+          <strong>Backend optimiert</strong>
+          <small>29.10.2025</small>
+        </div>
+      </div>
+
+      <!-- Box Rechts -->
+      <div class="box">
+        <h2>Teammitglieder</h2>
+        <div class="member">
+          <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="User">
+          <span>@BlueDev</span>
+        </div>
+        <div class="member">
+          <img src="https://cdn.discordapp.com/embed/avatars/1.png" alt="User">
+          <span>@Luna</span>
+        </div>
+        <div class="member">
+          <img src="https://cdn.discordapp.com/embed/avatars/2.png" alt="User">
+          <span>@Nova</span>
+        </div>
+        <div class="member">
+          <img src="https://cdn.discordapp.com/embed/avatars/3.png" alt="User">
+          <span>@Zero</span>
+        </div>
+        <div class="member">
+          <img src="https://cdn.discordapp.com/embed/avatars/4.png" alt="User">
+          <span>@Sky</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Blue ⚡ Bot — Alle Rechte vorbehalten</footer>
+</body>
+</html>

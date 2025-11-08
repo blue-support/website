@@ -1,35 +1,71 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue ⚡ Bot – Willkommen</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-<style>
-  html, body {
-    margin: 0;
-    height: 100%;
-    overflow-y: scroll;
-    background-color: #030712;
-    font-family: "Poppins", sans-serif;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  body::-webkit-scrollbar { display: none; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Bot - Willkommen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      /* === Hintergrund === */
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: #0b0b0f;
+        color: white;
+        font-family: "Poppins", sans-serif;
+      }
 
-  /* Hintergrund-Orbs fixiert */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.4;
-    z-index: 0;
-  }
-  .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
-  .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
-  .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
-  @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,-40px) scale(1.15); } }
+      ::-webkit-scrollbar {
+        display: none;
+      }
 
+      .background {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.6;
+      }
+
+      .orb1 {
+        width: 400px;
+        height: 400px;
+        background: #ec4899;
+        top: 10%;
+        left: 10%;
+      }
+
+      .orb2 {
+        width: 500px;
+        height: 500px;
+        background: #3b82f6;
+        bottom: 10%;
+        right: 15%;
+      }
+
+      .orb3 {
+        width: 300px;
+        height: 300px;
+        background: #9333ea;
+        top: 40%;
+        right: 30%;
+      }
+
+      /* === Inhalt === */
       .content {
         position: relative;
         z-index: 1;
@@ -40,224 +76,206 @@
         justify-content: flex-start;
         min-height: 100vh;
         gap: 40px;
-        padding: 140px 20px 100px 20px; /* <-- mehr Abstand oben */
+        padding: 140px 20px 100px 20px;
       }
 
-  h1 {
-    font-size: 80px;
-    font-weight: 700;
-    background: linear-gradient(90deg, #60a5fa, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-  }
+      h1 {
+        font-size: 64px;
+        background: linear-gradient(90deg, #60a5fa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
 
-  p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 850px;
-    line-height: 1.6;
-  }
+      p.description {
+        font-size: 18px;
+        max-width: 800px;
+        color: #ccc;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
 
-  /* Boxen */
-  .boxes {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
+      /* === Boxen (Updates & Team) === */
+      .boxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        width: 90%;
+        max-width: 1200px;
+      }
 
-  .box {
-    width: 300px;
-    height: 400px;
-    background: rgba(200,200,200,0.05);
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    box-shadow: 0 0 20px 6px rgba(59,130,246,0.4);
-    color: white;
-    padding: 20px;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    transition: all 0.3s ease;
-  }
-  .box::-webkit-scrollbar { display: none; }
+      .box {
+        background: rgba(30, 30, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 20px;
+        width: 400px;
+        height: 350px;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
 
-  .box:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 30px 12px rgba(59,130,246,0.8);
-  }
+      .box::-webkit-scrollbar {
+        display: none;
+      }
 
-  .box h2 {
-    margin-top: 0;
-    font-size: 24px;
-    background: linear-gradient(90deg, #60a5fa, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+      .box:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+      }
 
-  /* Updates */
-  .update {
-    text-align: left;
-    margin-bottom: 15px;
-  }
-  .update strong {
-    display: block;
-    font-size: 16px;
-    color: #60a5fa;
-  }
-  .update small {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-  }
+      .box h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        background: linear-gradient(90deg, #60a5fa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-  /* Teammitglieder */
-  .member {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  .member img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #60a5fa;
-  }
-  .member span {
-    font-size: 16px;
-    color: white;
-  }
+      .update-item {
+        margin-bottom: 15px;
+        text-align: left;
+      }
 
-  /* Weitere Seiten */
-  .extra-box {
-    width: 700px;
-    background: rgba(200,200,200,0.05);
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    box-shadow: 0 0 20px 6px rgba(59,130,246,0.4);
-    color: white;
-    padding: 25px;
-    transition: all 0.3s ease;
-  }
+      .update-item span {
+        display: block;
+        font-size: 14px;
+        color: #aaa;
+      }
 
-  .extra-box:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 30px 12px rgba(59,130,246,0.8);
-  }
+      .team-member {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
 
-  .extra-box h2 {
-    font-size: 24px;
-    margin-bottom: 5px;
-    background: linear-gradient(90deg, #60a5fa, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+      .team-member img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
 
-  .button-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 10px;
-  }
+      /* === Weitere Seiten Box === */
+      .extra-box {
+        width: 90%;
+        max-width: 900px;
+        background: rgba(30, 30, 30, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-  .mini-btn {
-    width: 120px;
-    height: 40px;
-    border-radius: 30px;
-    border: 2px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+      .extra-box:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+      }
 
-  .mini-btn:hover {
-    background: rgba(59,130,246,0.3);
-    box-shadow: 0 0 20px 5px rgba(59,130,246,0.6);
-    transform: scale(1.05);
-  }
+      .extra-box h2 {
+        font-size: 24px;
+        position: relative;
+        top: -8px; /* Titel leicht nach oben */
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #60a5fa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-  footer {
-    text-align: center;
-    color: rgba(255,255,255,0.5);
-    font-size: 14px;
-    margin-top: 60px;
-    padding-bottom: 20px;
-  }
-</style>
-</head>
-<body>
-  <!-- Hintergrund -->
-  <div class="orb pink"></div>
-  <div class="orb blue"></div>
-  <div class="orb purple"></div>
+      .extra-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
 
-  <div class="content">
-    <h1>Willkommen</h1>
-    <p>
-      Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du hier genau richtig!  
-      Unser Blue <i class="fa-solid fa-bolt" style="color: #FFD43B;"></i> Bot sorgt für Ordnung, Unterhaltung und alles, was du für deinen Server brauchst – ohne unnötigen Schnickschnack.  
-      Einfach, effizient und immer am Start. Überzeug dich selbst! <i class="fa-solid fa-fire" style="color: #f0a505;"></i>
-    </p>
+      .extra-buttons button {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.5);
+        border-radius: 12px;
+        padding: 10px 16px;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-    <div class="boxes">
-      <!-- Box Links -->
-      <div class="box">
-        <h2>Letzte Updates</h2>
-        <div class="update">
-          <strong>Update 0.0.2</strong>
-          <small>02.11.2025</small>
-        </div>
-        <div class="update">
-          <strong>Update 0.0.1</strong>
-          <small>01.11.2025</small>
-        </div>
-        <div class="update">
-          <strong>Beta Launch</strong>
-          <small>31.10.2025</small>
-        </div>
-      </div>
+      .extra-buttons button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        background: rgba(59, 130, 246, 0.2);
+      }
 
-      <!-- Box Rechts -->
-      <div class="box">
-        <h2>Teammitglieder</h2>
-        <div class="member">
-          <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="User">
-          <span>@BlueDev</span>
-        </div>
-        <div class="member">
-          <img src="https://cdn.discordapp.com/embed/avatars/1.png" alt="User">
-          <span>@Luna</span>
-        </div>
-        <div class="member">
-          <img src="https://cdn.discordapp.com/embed/avatars/2.png" alt="User">
-          <span>@Nova</span>
-        </div>
-      </div>
+      /* === Footer === */
+      footer {
+        margin-top: 80px;
+        font-size: 14px;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
     </div>
 
-    <!-- Neue Box -->
-    <div class="extra-box">
-      <h2>Weitere Seiten</h2>
-      <div class="button-grid">
-        <button class="mini-btn" onclick="location.href='partner.html'">Partner</button>
-        <button class="mini-btn" onclick="location.href='game.html'">Game</button>
-        <button class="mini-btn">Shop</button>
-        <button class="mini-btn">FAQ</button>
-        <button class="mini-btn">Support</button>
-        <button class="mini-btn">Events</button>
-        <button class="mini-btn">Status</button>
-        <button class="mini-btn">Docs</button>
-        <button class="mini-btn">News</button>
-        <button class="mini-btn">Impressum</button>
-      </div>
-    </div>
-  </div>
+    <div class="content">
+      <h1>Willkommen</h1>
+      <p class="description">
+        Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du
+        hier genau richtig! Unser Blue
+        <i class="fa-solid fa-bolt" style="color: #FFD43B"></i> Bot sorgt für
+        Ordnung, Unterhaltung und alles, was du für deinen Server brauchst –
+        ohne unnötigen Schnickschnack. Einfach, effizient und immer am Start.
+        Überzeug dich selbst!
+        <i class="fa-solid fa-fire" style="color: #f0a505"></i>
+      </p>
 
-  <footer>© 2025 Alle Rechte vorbehalten</footer>
-</body>
+      <div class="boxes">
+        <div class="box">
+          <h2>Letzte Updates</h2>
+          <div class="update-item">
+            <strong>Update: 0.0.2</strong>
+            <span>Datum: 02.11.2025</span>
+          </div>
+          <div class="update-item">
+            <strong>Update: 0.0.1</strong>
+            <span>Datum: 01.11.2025</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <h2>Teammitglieder</h2>
+          <div class="team-member">
+            <img src="https://i.imgur.com/4ZQZ4T4.png" alt="User" />
+            <span>@Blue</span>
+          </div>
+          <div class="team-member">
+            <img src="https://i.imgur.com/4ZQZ4T4.png" alt="User" />
+            <span>@Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-box">
+        <h2>Weitere Seiten</h2>
+        <div class="extra-buttons">
+          <button onclick="window.location.href='partner.html'">Partner</button>
+          <button onclick="window.location.href='game.html'">Game</button>
+          <button onclick="window.location.href='#'">Soon</button>
+          <button onclick="window.location.href='#'">Soon</button>
+          <button onclick="window.location.href='#'">Soon</button>
+        </div>
+      </div>
+
+      <footer>© 2025 Alle Rechte vorbehalten.</footer>
+    </div>
+  </body>
 </html>

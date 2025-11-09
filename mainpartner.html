@@ -62,13 +62,8 @@
       }
 
       @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(60px, -40px) scale(1.15);
-        }
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(60px, -40px) scale(1.15); }
       }
 
       .content {
@@ -103,15 +98,18 @@
       /* Partner Grid */
       .partners-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 60px 40px;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1300px;
         justify-items: center;
       }
 
       .partner-card {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
         background: rgba(200, 200, 200, 0.05);
         border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
@@ -119,12 +117,14 @@
         color: white;
         padding: 25px;
         transition: all 0.3s ease;
-        text-align: center;
+        text-decoration: none;
+        width: 100%;
+        max-width: 340px;
       }
 
       .partner-card:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
+        box-shadow: 0 0 35px 15px rgba(59, 130, 246, 0.8);
       }
 
       .partner-card img {
@@ -171,59 +171,59 @@
       <p>Hier findest du alle unsere aktuellen Partner und Kooperationen ⚡</p>
 
       <div class="partners-grid">
-        <div class="partner-card">
+        <a href="https://discord.gg/UHkUKbugfz" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/7awxin3.png" alt="Partner 1" />
           <h2>STGMNetwork (DE)</h2>
           <p>STGMNetwork entwickelt moderne Softwarelösungen für effiziente und smarte Systeme.</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 2" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 3" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 4" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://discord.gg/tjKeANbM67" target="_blank" class="partner-card">
           <img src="https://images-ext-1.discordapp.net/external/Nfr3gDzHBvCD7zh44QeOIwn4-H2NWurcI43ZBlnz1Co/%3Fsize%3D1024/https/cdn.discordapp.com/icons/801052933227413505/a_7a56c6f40d8cf7f5cff8551837cd908d.gif" alt="Partner 5" />
           <h2>Team Grün Gaming-Community</h2>
           <p>Der perfekte Discord-Server zum Zocken, Quatschen und Spaß haben! 🎮</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://discord.gg/gQupsCMJZk" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 6" />
           <h2>Vacer.de</h2>
           <p>Leistungsstarkes Hosting zu fairen Preisen – made for everyone 🚀</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 7" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 8" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
 
-        <div class="partner-card">
+        <a href="https://website.blue-lol.de/not_found" target="_blank" class="partner-card">
           <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 9" />
           <h2>Verfügbar</h2>
           <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
-        </div>
+        </a>
       </div>
     </div>
 

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue ⚡ Bot – Unsere Partner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #030712;
+        font-family: "Poppins", sans-serif;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hintergrund-Orbs */
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.4;
+        z-index: 0;
+      }
+
+      .orb.pink {
+        background: #ec4899;
+        width: 500px;
+        height: 500px;
+        top: 10%;
+        left: 60%;
+        animation: float 18s infinite alternate ease-in-out;
+      }
+
+      .orb.blue {
+        background: #3b82f6;
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 10%;
+        animation: float 22s infinite alternate ease-in-out;
+      }
+
+      .orb.purple {
+        background: #8b5cf6;
+        width: 400px;
+        height: 400px;
+        top: 30%;
+        left: 40%;
+        animation: float 25s infinite alternate ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(60px, -40px) scale(1.15);
+        }
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        gap: 40px;
+        padding: 120px 20px 100px 20px;
+      }
+
+      h1 {
+        font-size: 80px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #60a5fa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      p {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 850px;
+        line-height: 1.6;
+      }
+
+      /* Partner Grid */
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        width: 100%;
+        max-width: 1200px;
+        justify-items: center;
+      }
+
+      .partner-card {
+        width: 100%;
+        background: rgba(200, 200, 200, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.4);
+        color: white;
+        padding: 25px;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .partner-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
+      }
+
+      .partner-card img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #60a5fa;
+        margin-bottom: 15px;
+      }
+
+      .partner-card h2 {
+        font-size: 22px;
+        margin: 10px 0;
+        background: linear-gradient(90deg, #60a5fa, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .partner-card p {
+        font-size: 15px;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      footer {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        margin-top: 60px;
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hintergrund -->
+    <div class="orb pink"></div>
+    <div class="orb blue"></div>
+    <div class="orb purple"></div>
+
+    <div class="content">
+      <h1>Unsere Partner</h1>
+      <p>Hier findest du alle unsere aktuellen Partner und Kooperationen ⚡</p>
+
+      <div class="partners-grid">
+        <div class="partner-card">
+          <img src="https://i.imgur.com/7awxin3.png" alt="Partner 1" />
+          <h2>STGMNetwork (DE)</h2>
+          <p>STGMNetwork entwickelt moderne Softwarelösungen für effiziente und smarte Systeme.</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 2" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 3" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 4" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://images-ext-1.discordapp.net/external/Nfr3gDzHBvCD7zh44QeOIwn4-H2NWurcI43ZBlnz1Co/%3Fsize%3D1024/https/cdn.discordapp.com/icons/801052933227413505/a_7a56c6f40d8cf7f5cff8551837cd908d.gif" alt="Partner 5" />
+          <h2>Team Grün Gaming-Community</h2>
+          <p>Der perfekte Discord-Server zum Zocken, Quatschen und Spaß haben! 🎮</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 6" />
+          <h2>Vacer.de</h2>
+          <p>Leistungsstarkes Hosting zu fairen Preisen – made for everyone 🚀</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 7" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 8" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="https://i.imgur.com/IPEDDCT.png" alt="Partner 9" />
+          <h2>Verfügbar</h2>
+          <p>Du möchtest Partner werden? Bewirb dich jetzt und werde Teil unserer Community!</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2025 Alle Rechte vorbehalten</footer>
+  </body>
+</html>

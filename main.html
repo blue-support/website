@@ -10,8 +10,7 @@
       crossorigin="anonymous"
     />
     <style>
-      html,
-      body {
+      html, body {
         margin: 0;
         height: 100%;
         overflow-y: scroll;
@@ -20,234 +19,61 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
-
-      body::-webkit-scrollbar {
-        display: none;
-      }
+      body::-webkit-scrollbar { display: none; }
 
       /* Hintergrund-Orbs fixiert */
-      .orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.4;
-        z-index: 0;
-      }
-
-      .orb.pink {
-        background: #ec4899;
-        width: 500px;
-        height: 500px;
-        top: 10%;
-        left: 60%;
-        animation: float 18s infinite alternate ease-in-out;
-      }
-
-      .orb.blue {
-        background: #3b82f6;
-        width: 600px;
-        height: 600px;
-        top: 50%;
-        left: 10%;
-        animation: float 22s infinite alternate ease-in-out;
-      }
-
-      .orb.purple {
-        background: #8b5cf6;
-        width: 400px;
-        height: 400px;
-        top: 30%;
-        left: 40%;
-        animation: float 25s infinite alternate ease-in-out;
-      }
+      .orb { position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.4; z-index: 0; }
+      .orb.pink { background: #ec4899; width: 500px; height: 500px; top: 10%; left: 60%; animation: float 18s infinite alternate ease-in-out; }
+      .orb.blue { background: #3b82f6; width: 600px; height: 600px; top: 50%; left: 10%; animation: float 22s infinite alternate ease-in-out; }
+      .orb.purple { background: #8b5cf6; width: 400px; height: 400px; top: 30%; left: 40%; animation: float 25s infinite alternate ease-in-out; }
 
       @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(60px, -40px) scale(1.15);
-        }
+        0%,100% { transform: translate(0,0) scale(1); }
+        50% { transform: translate(60px,-40px) scale(1.15); }
       }
 
-      .content {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        gap: 40px;
-        padding: 140px 20px 100px 20px; /* <-- mehr Abstand oben */
-      }
+      .content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: flex-start; min-height: 100vh; gap: 40px; padding: 140px 20px 100px 20px; }
 
-      h1 {
-        font-size: 80px;
-        font-weight: 700;
-        background: linear-gradient(90deg, #60a5fa, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 0;
-      }
+      h1 { font-size: 80px; font-weight: 700; background: linear-gradient(90deg,#60a5fa,#ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin:0; }
+      p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 850px; line-height:1.6; }
 
-      p {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 850px;
-        line-height: 1.6;
-      }
+      .boxes { display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+      .box { width: 300px; height: 400px; background: rgba(200,200,200,0.05); border: 2px solid rgba(255,255,255,0.2); border-radius: 20px; box-shadow: 0 0 20px 6px rgba(59,130,246,0.4); color: white; padding: 20px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; transition: all 0.3s ease; }
+      .box::-webkit-scrollbar { display: none; }
+      .box:hover { transform: scale(1.03); box-shadow: 0 0 30px 12px rgba(59,130,246,0.8); }
+      .box h2 { margin-top:0; font-size:24px; background: linear-gradient(90deg,#60a5fa,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-      /* Boxen */
-      .boxes {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 40px;
-        flex-wrap: wrap;
-      }
+      .update { text-align:left; margin-bottom:15px; }
+      .update strong { display:block; font-size:16px; color:#60a5fa; }
+      .update small { font-size:12px; color: rgba(255,255,255,0.5); }
 
-      .box {
-        width: 300px;
-        height: 400px;
-        background: rgba(200, 200, 200, 0.05);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.4);
-        color: white;
-        padding: 20px;
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        transition: all 0.3s ease;
-      }
+      .member { display:flex; align-items:center; gap:10px; margin-bottom:15px; }
+      .member img { width:45px; height:45px; border-radius:50%; object-fit:cover; border:2px solid #60a5fa; }
+      .member span { font-size:16px; color:white; }
 
-      .box::-webkit-scrollbar {
-        display: none;
-      }
+      .extra-box { width:700px; background: rgba(200,200,200,0.05); border:2px solid rgba(255,255,255,0.2); border-radius:20px; box-shadow:0 0 20px 6px rgba(59,130,246,0.4); color:white; padding:25px; transition: all 0.3s ease; }
+      .extra-box:hover { transform: scale(1.02); box-shadow:0 0 30px 12px rgba(59,130,246,0.8); }
+      .extra-box h2 { font-size:24px; margin-bottom:20px; background: linear-gradient(90deg,#60a5fa,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-      .box:hover {
-        transform: scale(1.03);
-        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
-      }
+      .button-grid { display:flex; flex-wrap:wrap; justify-content: space-evenly; gap:10px; }
+      .mini-btn { width:120px; height:40px; border-radius:30px; border:2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color:white; font-size:14px; cursor:pointer; transition: all 0.3s ease; }
+      .mini-btn:hover { background: rgba(59,130,246,0.3); box-shadow:0 0 20px 5px rgba(59,130,246,0.6); transform:scale(1.05); }
 
-      .box h2 {
-        margin-top: 0;
-        font-size: 24px;
-        background: linear-gradient(90deg, #60a5fa, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      .newsletter-link { display:inline-block; padding:10px 25px; border-radius:25px; background: linear-gradient(90deg,#60a5fa,#ec4899); color:#fff; text-decoration:none; font-weight:600; transition: all 0.3s ease; cursor:pointer; }
+      .newsletter-link:hover { transform: scale(1.05); box-shadow:0 0 15px rgba(255,255,255,0.4); }
 
-      /* Updates */
-      .update {
-        text-align: left;
-        margin-bottom: 15px;
-      }
-
-      .update strong {
-        display: block;
-        font-size: 16px;
-        color: #60a5fa;
-      }
-
-      .update small {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      /* Teammitglieder */
-      .member {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-      }
-
-      .member img {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #60a5fa;
-      }
-
-      .member span {
-        font-size: 16px;
-        color: white;
-      }
-
-      /* Weitere Seiten */
-      .extra-box {
-        width: 700px;
-        background: rgba(200, 200, 200, 0.05);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        box-shadow: 0 0 20px 6px rgba(59, 130, 246, 0.4);
-        color: white;
-        padding: 25px;
-        transition: all 0.3s ease;
-      }
-
-      .extra-box:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 30px 12px rgba(59, 130, 246, 0.8);
-      }
-
-      .extra-box h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        background: linear-gradient(90deg, #60a5fa, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-     .extra-box h2 {
-       font-size: 24px;
-       position: relative;
-       top: -8px; /* <-- Titel leicht nach oben */
-       margin-bottom: 20px;
-       background: linear-gradient(90deg, #60a5fa, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-     }
-
-
-      .button-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 10px;
-      }
-
-      .mini-btn {
-        width: 120px;
-        height: 40px;
-        border-radius: 30px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-size: 14px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .mini-btn:hover {
-        background: rgba(59, 130, 246, 0.3);
-        box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.6);
-        transform: scale(1.05);
-      }
-
-      footer {
-        text-align: center;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 14px;
-        margin-top: 60px;
-        padding-bottom: 20px;
-      }
+      footer { text-align:center; color: rgba(255,255,255,0.5); font-size:14px; margin-top:60px; padding-bottom:20px; }
     </style>
+
+    <!-- MailerLite Universal Script -->
+    <script>
+      (function(w,d,e,u,f,l,n){
+        w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},
+        l=d.createElement(e); l.async=1; l.src=u;
+        n=d.getElementsByTagName(e)[0]; n.parentNode.insertBefore(l,n);
+      })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1983589'); // <-- Deine Account-ID
+    </script>
   </head>
 
   <body>
@@ -259,65 +85,34 @@
     <div class="content">
       <h1>Willkommen</h1>
       <p>
-        Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du
-        hier genau richtig! Unser Blue
-        <i class="fa-solid fa-bolt" style="color: #FFD43B"></i> Bot sorgt für
-        Ordnung, Unterhaltung und alles, was du für deinen Server brauchst –
-        ohne unnötigen Schnickschnack. Einfach, effizient und immer am Start.
-        Überzeug dich selbst!
+        Kein Bock auf 20 verschiedene Bots, die nur Chaos bringen? Dann bist du hier genau richtig! Unser Blue
+        <i class="fa-solid fa-bolt" style="color: #FFD43B"></i> Bot sorgt für Ordnung, Unterhaltung und alles, was du für deinen Server brauchst – ohne unnötigen Schnickschnack. Einfach, effizient und immer am Start. Überzeug dich selbst!
         <i class="fa-solid fa-fire" style="color: #f0a505"></i>
       </p>
 
       <div class="boxes">
-        <!-- Box Links -->
         <div class="box">
           <h2>Letzte Updates</h2>
-          <div class="update">
-            <strong>Update 3.1.0</strong>
-            <small>Bald</small>
-          </div>
-          <div class="update">
-            <strong>Update 3.0.0</strong>
-            <small>27.09.2025</small>
-          </div>
+          <div class="update"><strong>Update 3.1.0</strong><small>Bald</small></div>
+          <div class="update"><strong>Update 3.0.0</strong><small>27.09.2025</small></div>
         </div>
 
-        <!-- Box Rechts -->
         <div class="box">
           <h2>Teammitglieder</h2>
-          <div class="member">
-            <img
-              src="https://images-ext-1.discordapp.net/external/IYtuXHvDEL8bU0z6YPfOsJ6gGfX2U2sbuHgDdcz7z7w/https/cdn.discordapp.com/avatars/1376158520667406336/99b89d279872a8bc56fc57628cfc860f.webp?format=webp"
-              alt="User"
-            />
-            <span>@Kuba_e45</span>
-          </div>
-          <div class="member">
-            <img
-              src="https://images-ext-1.discordapp.net/external/QIGZ4z-49B-edNsUeK_z1FlBtQppAyE7p74TFdTVVIA/https/cdn.discordapp.com/avatars/1240717380192047196/6d74f6aa1503e2da0997e4b55584557d.webp?format=webp"
-              alt="User"
-            />
-            <span>@SchwiiGGT</span>
-          </div>
+          <div class="member"><img src="https://images-ext-1.discordapp.net/external/IYtuXHvDEL8bU0z6YPfOsJ6gGfX2U2sbuHgDdcz7z7w/https/cdn.discordapp.com/avatars/1376158520667406336/99b89d279872a8bc56fc57628cfc860f.webp?format=webp" alt="User"/><span>@Kuba_e45</span></div>
+          <div class="member"><img src="https://images-ext-1.discordapp.net/external/QIGZ4z-49B-edNsUeK_z1FlBtQppAyE7p74TFdTVVIA/https/cdn.discordapp.com/avatars/1240717380192047196/6d74f6aa1503e2da0997e4b55584557d.webp?format=webp" alt="User"/><span>@SchwiiGGT</span></div>
         </div>
       </div>
 
-      <!-- Neue Box -->
       <div class="extra-box">
         <h2>Weitere Seiten</h2>
         <div class="button-grid">
-          <button class="mini-btn" onclick="location.href='mainpartner.html'">
-            Partner
-          </button>
-          <button class="mini-btn" onclick="location.href='blueggt.html'">
-            ChatBot
-          </button>
-          <button class="mini-btn">Newsletter</button>
+          <button class="mini-btn" onclick="location.href='mainpartner.html'">Partner</button>
+          <button class="mini-btn" onclick="location.href='blueggt.html'">ChatBot</button>
+          <a href="javascript:void(0);" class="newsletter-link" onclick="ml('show', 'iBumYE', true)">Newsletter abonnieren</a>
           <button class="mini-btn">FAQ</button>
           <button class="mini-btn">Support</button>
           <button class="mini-btn">Status</button>
-          <button class="mini-btn">...</button>
-          <button class="mini-btn">...</button>
           <button class="mini-btn">...</button>
           <button class="mini-btn">Impressum</button>
         </div>

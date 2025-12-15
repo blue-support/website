@@ -81,7 +81,7 @@
         justify-content: flex-start;
         min-height: 100vh;
         gap: 40px;
-        padding: 140px 20px 100px 20px; /* <-- mehr Abstand oben */
+        padding: 140px 20px 100px 20px;
       }
 
       h1 {
@@ -204,17 +204,6 @@
         -webkit-text-fill-color: transparent;
       }
 
-     .extra-box h2 {
-       font-size: 24px;
-       position: relative;
-       top: -8px; /* <-- Titel leicht nach oben */
-       margin-bottom: 20px;
-       background: linear-gradient(90deg, #60a5fa, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-     }
-
-
       .button-grid {
         display: flex;
         flex-wrap: wrap;
@@ -248,6 +237,18 @@
         padding-bottom: 20px;
       }
     </style>
+    
+    <!-- MailerLite Script -->
+    <script src="https://static.mailerlite.com/js/universal.js"></script>
+    <script>
+      function ml(action, formId, show) {
+        if(window.ml_account && ml_account.forms && ml_account.forms[formId]) {
+          ml_account.forms[formId].show();
+        } else {
+          alert('Formular nicht gefunden. Bitte prüfen Sie die Form-ID.');
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -319,7 +320,8 @@
           <button class="mini-btn">Status</button>
           <button class="mini-btn">...</button>
           <button class="mini-btn">...</button>
-          <button class="ml-onclick-form" onclick="ml('show', 'iBumYE', true)">Newsletter</button>
+          <!-- Newsletter Button -->
+          <button class="mini-btn" onclick="ml('show', 'iBumYE', true)">Newsletter</button>
           <button class="mini-btn">Impressum</button>
         </div>
       </div>

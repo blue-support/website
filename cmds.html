@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bot Commands ⚡</title>
   <link rel="icon" type="image/png" href="https://i.imgur.com/RuRTBMD.png" />
+
   <style>
     html, body {
       margin: 0;
@@ -29,10 +30,11 @@
     }
 
     .fade-slide.visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
+      opacity: 1;
+      transform: translateY(0);
     }
 
+    /* Navbar */
     .navbar {
       background-color: rgba(0, 0, 50, 0.8);
       padding: 15px 20px;
@@ -40,20 +42,8 @@
       font-weight: bold;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       color: white;
-      position: relative;
-    }
-
-    .menu-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .menu-icon {
-      font-size: 28px;
     }
 
     .profile-img {
@@ -62,34 +52,9 @@
       border-radius: 50%;
       border: 2px solid white;
       object-fit: cover;
-      margin-left: auto;
-      margin-right: 10px;
     }
 
-    .menu {
-      position: absolute;
-      top: 60px;
-      left: 20px;
-      background-color: rgba(0,0,50,0.95);
-      border-radius: 8px;
-      padding: 10px;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-      font-size: 16px;
-      min-width: 180px;
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .menu a:hover {
-      text-decoration: underline;
-    }
-
+    /* Main Content */
     .main {
       padding: 80px 20px 40px;
       max-width: 1000px;
@@ -118,28 +83,14 @@
 
   <!-- Navbar -->
   <div class="navbar fade-slide">
-    <div class="menu-wrapper" onclick="toggleMenu()">
-      <div class="menu-icon">☰</div>
-      <div>Menü</div>
-    </div>
-
     <span>Blue Support ⚡</span>
     <img src="https://i.imgur.com/RuRTBMD.png" alt="Profil" class="profile-img" />
-
-    <div class="menu" id="menu">
-      <a href="partners.html">Partners</a>
-      <a href="https://dashboard.blue-lol.de">Dashboard</a>
-      <a href="blueggt.html">BlueGGT - ChatBot</a>
-      <a href="cmds.html">Bot Commands</a>
-      <a href="generator.html">QR Generator</a>
-      <a href="snake.html">Blue Snake (Game)</a>
-      <a href="https://discord.com/oauth2/authorize?client_id=1321889022380871681&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2F2PC8aMMmfv&integration_type=0&scope=bot+guilds.join">Invite Bot</a>
-    </div>
   </div>
 
   <!-- Main Content -->
   <div class="main fade-slide">
     <h1>Bot Commands</h1>
+
     <div class="command"><strong>/help</strong> – Zeigt alle Befehle an</div>
     <div class="command"><strong>/setup-globalchat</strong> – Setzt einen Channel als Globalchat. (Admin only)</div>
     <div class="command"><strong>/remove-globalchat</strong> – Entfernt einen Globalchat-Channel. (Admin only)</div>
@@ -148,7 +99,7 @@
     <div class="command"><strong>/tictactoe</strong> – Starte ein Tic Tac Toe Spiel</div>
     <div class="command"><strong>/setup-counting</strong> – Setzt den Kanal für das Zählspiel. (Admin only)</div>
     <div class="command"><strong>/setup-errate-zahl</strong> – Startet ein Errate-die-Zahl-Spiel in einem Kanal. (Admin only)</div>
-    <div class="command"><strong>/join</strong> – Bot joined deinem Sprachkanal (Admin only)</div>
+    <div class="command"><strong>/join</strong> – Bot joint deinem Sprachkanal (Admin only)</div>
     <div class="command"><strong>/leave</strong> – Bot verlässt den Sprachkanal (Admin only)</div>
     <div class="command"><strong>/aktueller-song</strong> – Zeigt den aktuell laufenden Song an</div>
     <div class="command"><strong>/vorheriger-song</strong> – Zeigt den Song an, der davor abgespielt wurde</div>
@@ -158,22 +109,14 @@
     <div class="command"><strong>/ban</strong> – Bannt einen User mit Grund und optionaler Dauer. (Admin only)</div>
     <div class="command"><strong>/unban</strong> – Entbannt einen User manuell. (Admin only)</div>
     <div class="command"><strong>/kick</strong> – Kickt einen User mit Grund. (Admin only)</div>
-    <div class="command"><strong>/mute</strong> – Muted (Timeout) einen User für eine bestimmte Dauer. (Admin Only)</div>
+    <div class="command"><strong>/mute</strong> – Muted (Timeout) einen User für eine bestimmte Dauer. (Admin only)</div>
     <div class="command"><strong>/unmute</strong> – Entmutet (Timeout Ende) einen User manuell. (Admin only)</div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
-    // Menü toggle
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
-
-    // Fade Animation beim Laden
     window.addEventListener('load', () => {
-      const fadeEls = document.querySelectorAll('.fade-slide');
-      fadeEls.forEach((el, i) => {
+      document.querySelectorAll('.fade-slide').forEach((el, i) => {
         setTimeout(() => el.classList.add('visible'), i * 300);
       });
     });
